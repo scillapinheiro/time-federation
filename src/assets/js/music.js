@@ -1,4 +1,4 @@
-import { announcePlay, formatTime, loadScript, pauseWhenHidden, reduceMotion } from "./util.js";
+import { announcePlay, formatTime, loadScript, pauseWhenHidden } from "./util.js";
 
 // Cassette rack + boombox. Playback uses Spotify's official embed and its iFrame API.
 export function initMusic() {
@@ -23,7 +23,6 @@ export function initMusic() {
   const uri = (tape) => `spotify:track:${tape.dataset.spotify}`;
 
   function typeTitle(text) {
-    if (reduceMotion) return (titleEl.textContent = text);
     titleEl.textContent = "";
     [...text].forEach((ch, i) => setTimeout(() => (titleEl.textContent += ch), i * 35));
   }
@@ -121,12 +120,11 @@ export function initMusic() {
     const previous = current;
     tape.classList.add("is-playing");
 
-    if (!reduceMotion) await swapAnimation(svg);
-    else tapeSlot.replaceChildren(svg.cloneNode(true));
+    await swapAnimation(svg);
 
     previous.classList.remove("is-playing");
     previous.removeAttribute("aria-current");
-    if (!reduceMotion) previous.querySelector("svg").animate([{ opacity: 0, transform: "translateY(-14px)" }, { opacity: 1, transform: "none" }], { duration: 450, easing: "ease-out" });
+    previous.querySelector("svg").animate([{ opacity: 0, transform: "translateY(-14px)" }, { opacity: 1, transform: "none" }], { duration: 450, easing: "ease-out" });
     tape.classList.add("is-playing");
     tape.setAttribute("aria-current", "true");
     current = tape;

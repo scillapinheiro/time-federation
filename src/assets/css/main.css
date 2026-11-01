@@ -636,16 +636,19 @@ body.menu-open { overflow: hidden; }
 .page-home .site-footer { background: var(--bg); }
 
 /* ---------- Reduced motion ---------- */
+/* Reduced motion: keep the gentle, story-telling animations (hourglass drawing,
+   tapes going into the players, flaps forming text, fades) and stop anything
+   that loops, pulses, flashes or moves the whole screen. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .home__rings span { animation: none; opacity: 0.25; }
   .home__rings span:nth-child(1) { transform: translate(-50%, -50%) scale(0.2); }
   .home__rings span:nth-child(2) { transform: translate(-50%, -50%) scale(0.4); }
   .home__rings span:nth-child(3) { transform: translate(-50%, -50%) scale(0.65); }
   .home__rings span:nth-child(4) { transform: translate(-50%, -50%) scale(0.95); }
-  .js [data-reveal] { opacity: 1; transform: none; }
-  .board__colon, .board__row.is-onsale .flaps--status::before { animation: none; }
-  .logo-line { stroke-dashoffset: 0; }
-  .logo-fill { opacity: 1; }
+  .home__core, .timeline__now, .board__colon, .board__row.is-onsale .flaps--status::before,
+  .boombox.is-playing .eq span, .boombox.is-playing .speaker span { animation: none; }
+  .tv__screen.is-static .tv__static { animation: none; opacity: 0; }
+  .js [data-reveal] { transform: none; transition: opacity 0.6s ease; }
+  .tape:hover { transform: none; }
 }

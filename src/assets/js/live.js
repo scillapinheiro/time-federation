@@ -17,7 +17,7 @@ export function initLive() {
   updateClock();
   setInterval(updateClock, 15000);
 
-  if (reduceMotion || !("IntersectionObserver" in window)) return;
+  if (!("IntersectionObserver" in window)) return;
 
   const rows = [...root.querySelectorAll(".board__row")];
 
@@ -77,7 +77,7 @@ export function initLive() {
   const sectionObserver = new IntersectionObserver(
     (entries) => {
       const visible = entries[0].isIntersecting;
-      if (visible && !idle) startIdle();
+      if (visible && !idle && !reduceMotion) startIdle();
       if (!visible) {
         clearInterval(idle);
         idle = null;

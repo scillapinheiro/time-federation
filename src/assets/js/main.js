@@ -5,7 +5,6 @@ import { initMusic } from "./music.js";
 import { initGallery } from "./gallery.js";
 import { initStore } from "./store.js";
 import { initLive } from "./live.js";
-import { reduceMotion } from "./util.js";
 
 function initReveal() {
   const items = document.querySelectorAll("[data-reveal]");
@@ -31,7 +30,7 @@ function initReveal() {
 function initHomeReplay() {
   const home = document.querySelector(".home");
   const logo = home?.querySelector(".home__logo");
-  if (!home || !logo || reduceMotion || !("IntersectionObserver" in window)) return;
+  if (!home || !logo || !("IntersectionObserver" in window)) return;
   let left = false;
   const replay = () => {
     logo.querySelectorAll(".logo-line, .logo-fill").forEach((el) => {

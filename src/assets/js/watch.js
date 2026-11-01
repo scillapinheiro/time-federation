@@ -143,12 +143,10 @@ export function initWatch() {
     setState("EJECT");
 
     // Eject: the inserted tape pops up out of the slot and returns to the rack
-    if (!reduceMotion) {
-      await spine.animate([{ transform: "none", opacity: 1 }, { transform: "translateY(-140%)", opacity: 0 }], { duration: 320, easing: "ease-in", fill: "forwards" }).finished;
-    }
+    await spine.animate([{ transform: "none", opacity: 1 }, { transform: "translateY(-140%)", opacity: 0 }], { duration: 320, easing: "ease-in", fill: "forwards" }).finished;
     previous.classList.remove("is-playing");
     previous.removeAttribute("aria-current");
-    if (!reduceMotion) previous.querySelector("svg").animate([{ opacity: 0, transform: "translateY(-14px)" }, { opacity: 1, transform: "none" }], { duration: 450, easing: "ease-out" });
+    previous.querySelector("svg").animate([{ opacity: 0, transform: "translateY(-14px)" }, { opacity: 1, transform: "none" }], { duration: 450, easing: "ease-out" });
 
     tape.classList.add("is-playing");
     tape.setAttribute("aria-current", "true");
@@ -156,12 +154,8 @@ export function initWatch() {
     label.textContent = tape.dataset.label;
     poster.src = `https://i.ytimg.com/vi/${tape.dataset.youtube}/maxresdefault.jpg`;
 
-    if (!reduceMotion) {
-      await insertAnimation(svg);
-      spine.animate([{ transform: "translateY(-60%)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 200, easing: "ease-out", fill: "forwards" });
-    } else {
-      spine.getAnimations().forEach((a) => a.cancel());
-    }
+    await insertAnimation(svg);
+    spine.animate([{ transform: "translateY(-60%)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 200, easing: "ease-out", fill: "forwards" });
     busy = false;
     await play(tape.dataset.youtube);
   }
