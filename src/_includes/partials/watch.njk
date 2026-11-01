@@ -1,0 +1,77 @@
+{%- from "partials/macros.njk" import icon, vhs, sectionHead -%}
+{%- set first = watch.items[0] -%}
+<section class="section watch" id="watch" aria-labelledby="watch-title" data-watch>
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <h2 class="section-title" id="watch-title">{{ s.watch.title }}</h2>
+      <p class="section-sub">{{ s.watch.subtitle }}</p>
+    </header>
+    <div class="watch__grid">
+      <div class="deck" data-reveal>
+        <div class="tv">
+          <div class="tv__screen" data-tv-screen>
+            <img class="tv__poster" src="https://i.ytimg.com/vi/{{ first.youtubeId }}/maxresdefault.jpg" alt="" loading="lazy" data-tv-poster>
+            <div class="tv__player" id="yt-player" data-tv-player></div>
+            <div class="tv__scanlines" aria-hidden="true"></div>
+            <div class="tv__static" aria-hidden="true"></div>
+            <div class="tv__osd" aria-hidden="true"><span data-osd-state>PLAY</span><span>SP <b data-osd-time>00:00:00</b></span></div>
+            <div class="tv__channel" aria-hidden="true">CH 03</div>
+            <button class="tv__play" type="button" aria-label="{{ s.watch.play }}: {{ first.title | t(lang) }}" data-tv-play>{{ icon("i-play") }}</button>
+          </div>
+          <div class="tv__panel" aria-hidden="true">
+            <span class="knob"></span><small>CHANNEL</small>
+            <span class="knob knob--b"></span><small>VOLUME</small>
+            <span class="grille"></span>
+            <span class="led"></span>
+          </div>
+        </div>
+        <div class="vcr">
+          <div class="vcr__slot" data-vcr-slot><span class="vcr__spine" data-vcr-spine><b data-vcr-label>{{ first.label }} {{ first.title | t(lang) | upper }}</b></span></div>
+          <div class="keys" role="group" aria-label="VCR">
+            <button class="key" type="button" data-cmd="rew" aria-label="{{ s.watch.rewind }}">{{ icon("i-rew") }}</button>
+            <button class="key key--play" type="button" data-cmd="play" aria-label="{{ s.watch.play }}">{{ icon("i-play") }}</button>
+            <button class="key" type="button" data-cmd="pause" aria-label="{{ s.watch.pause }}">{{ icon("i-pause") }}</button>
+            <button class="key" type="button" data-cmd="stop" aria-label="{{ s.watch.stop }}">{{ icon("i-stop") }}</button>
+            <button class="key" type="button" data-cmd="ff" aria-label="{{ s.watch.forward }}">{{ icon("i-ff") }}</button>
+          </div>
+          <div class="vcr__display" aria-live="polite"><span data-vcr-state>PLAY</span> <span data-vcr-time>0:00:00</span></div>
+        </div>
+      </div>
+
+      <div class="rack" data-carousel data-reveal>
+        <div class="rack__head">
+          <h3 class="rack__title">{{ s.watch.tapes }}</h3>
+          <span class="rack__hint">{{ s.watch.tapesHint }}</span>
+        </div>
+        <div class="rack__stage">
+        <div class="rack__viewport" data-carousel-viewport>
+          <ul class="rack__track rack__track--vhs">
+            {% for item in watch.items %}
+            <li class="rack__item">
+              <button class="tape{% if loop.first %} is-playing{% endif %}" type="button"
+                data-tape data-youtube="{{ item.youtubeId }}" data-label="{{ item.label }} {{ item.title | t(lang) | upper }}"
+                aria-label="{{ s.watch.insert }}: {{ item.label }}, {{ item.title | t(lang) }}"{% if loop.first %} aria-current="true"{% endif %}>
+                {{ vhs(item.label, "TIME FEDERATION") }}
+                <span class="tape__slot" aria-hidden="true">{{ s.watch.playing }}</span>
+              </button>
+              <p class="tape__kicker">{{ item.label }}{% if item.duration %} <span>{{ item.duration }}</span>{% endif %}</p>
+              <p class="tape__title">{{ item.title | t(lang) }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        </div>
+        <div class="rack__controls">
+          <div class="dots" data-carousel-dots></div>
+          <div class="rack__arrows">
+            <button class="carousel-btn carousel-btn--prev" type="button" aria-label="{{ s.watch.prev }}" data-carousel-prev hidden>{{ icon("i-chevron-l") }}</button>
+            <button class="carousel-btn carousel-btn--next" type="button" aria-label="{{ s.watch.next }}" data-carousel-next hidden>{{ icon("i-chevron-r") }}</button>
+          </div>
+        </div>
+        <a class="btn btn--primary btn--block" href="{{ site.youtubeChannel }}" target="_blank" rel="noopener">
+          <span class="btn__icon">{% include "icons/youtube.svg" %}</span>{{ s.watch.youtube }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

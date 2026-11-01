@@ -1,0 +1,54 @@
+{%- from "partials/macros.njk" import icon -%}
+{%- set navItems = [
+  { id: "watch", show: true },
+  { id: "music", show: true },
+  { id: "gallery", show: true },
+  { id: "store", show: showStore },
+  { id: "live", show: showLive },
+  { id: "booking", show: true }
+] -%}
+{%- set langHref = page.url | replace("/" + lang + "/", "/" + other + "/") -%}
+<header class="nav" data-nav>
+  <a class="nav__brand" href="{{ anchorBase }}#home">{{ site.name | upper }}</a>
+  <nav class="nav__links" aria-label="Main">
+    {% for item in navItems %}{% if item.show %}
+    <a class="nav__link" href="{{ anchorBase }}#{{ item.id }}" data-nav-link="{{ item.id }}">{{ s.nav[item.id] }}</a>
+    {% endif %}{% endfor %}
+  </nav>
+  <div class="nav__aside">
+    <div class="lang" role="group" aria-label="{{ s.langLabel }}">
+      <a href="{{ page.url | replace('/' + lang + '/', '/en/') }}" hreflang="en" {% if lang == "en" %}aria-current="true"{% endif %} data-lang-link>EN</a>
+      <a href="{{ page.url | replace('/' + lang + '/', '/pt/') }}" hreflang="pt-BR" {% if lang == "pt" %}aria-current="true"{% endif %} data-lang-link>PT</a>
+    </div>
+    <span class="nav__divider" aria-hidden="true"></span>
+    <ul class="social">
+      {% for net in site.social %}
+      <li><a href="{{ net.url }}" target="_blank" rel="noopener" aria-label="{{ net.name }}">{% include "icons/" + net.icon + ".svg" %}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="{{ s.menuOpen }}" data-label-open="{{ s.menuOpen }}" data-label-close="{{ s.menuClose }}" data-menu-toggle>
+    {{ icon("i-menu", "nav__toggle-open") }}{{ icon("i-close", "nav__toggle-close") }}
+  </button>
+</header>
+<div class="menu" id="menu" hidden data-menu>
+  <nav aria-label="Mobile">
+    <ul class="menu__links">
+      {% for item in navItems %}{% if item.show %}
+      <li><a href="{{ anchorBase }}#{{ item.id }}" data-menu-link>{{ s.nav[item.id] }}</a></li>
+      {% endif %}{% endfor %}
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <p class="menu__slogan">{{ site.slogan }}</p>
+    <div class="lang lang--lg" role="group" aria-label="{{ s.langLabel }}">
+      <a href="{{ page.url | replace('/' + lang + '/', '/en/') }}" hreflang="en" {% if lang == "en" %}aria-current="true"{% endif %} data-lang-link>EN</a>
+      <a href="{{ page.url | replace('/' + lang + '/', '/pt/') }}" hreflang="pt-BR" {% if lang == "pt" %}aria-current="true"{% endif %} data-lang-link>PT</a>
+    </div>
+    <ul class="social social--boxed">
+      {% for net in site.social %}
+      <li><a href="{{ net.url }}" target="_blank" rel="noopener" aria-label="{{ net.name }}">{% include "icons/" + net.icon + ".svg" %}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

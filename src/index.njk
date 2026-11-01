@@ -1,0 +1,14 @@
+---
+pagination:
+  data: site.languages
+  size: 1
+  alias: lang
+permalink: "/{{ lang }}/"
+layout: base.njk
+pageType: home
+eleventyComputed:
+  pageTitle: "{{ site.name }} | We are here, we are now"
+---
+{%- set s = i18n[lang] -%}
+{%- set anchorBase = "" -%}
+{% include "partials/sections.njk" %}

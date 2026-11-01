@@ -1,0 +1,28 @@
+{%- set p = store.product -%}
+<section class="section store" id="store" aria-labelledby="store-title" data-store>
+  <div class="container store__grid">
+    <div class="store__info" data-reveal>
+      <h2 class="section-title" id="store-title">{{ s.store.title }}</h2>
+      <p class="section-sub">{{ s.store.subtitle }}</p>
+      <div class="store__product">
+        <p class="kicker">{{ p.kicker | t(lang) | upper }}</p>
+        <h3 class="store__name">{{ p.name | upper }}</h3>
+        <p class="store__desc">{{ p.description | t(lang) }}</p>
+        <a class="btn btn--primary btn--block" href="{{ p.shopifyUrl or '#' }}"{% if p.shopifyUrl %} target="_blank" rel="noopener"{% endif %}>{{ s.store.buy }}</a>
+        <p class="store__note">{{ s.store.note }}</p>
+      </div>
+    </div>
+    <div class="store__media" data-reveal>
+      <figure class="store__main">
+        <img src="/assets/img/gallery/{{ p.photos[0].file }}.webp" alt="{{ p.photos[0].alt | t(lang) }}" loading="lazy" decoding="async" data-store-main class="crop-{{ p.photos[0].crop }}">
+      </figure>
+      <ul class="store__thumbs">
+        {% for ph in p.photos %}{% if not loop.first %}
+        <li><button type="button" aria-label="{{ s.store.photo }}: {{ ph.alt | t(lang) }}" data-store-thumb data-src="/assets/img/gallery/{{ ph.file }}.webp" data-crop="{{ ph.crop }}" data-alt="{{ ph.alt | t(lang) }}">
+          <img src="/assets/img/gallery/{{ ph.file }}-sm.webp" alt="" loading="lazy" class="crop-{{ ph.crop }}">
+        </button></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
