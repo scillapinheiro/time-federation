@@ -1,0 +1,54 @@
+{%- set months = { en: ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"], pt: ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"] } -%}
+{%- macro flaps(text, size, cls) -%}
+<span class="flaps flaps--{{ cls }}" aria-label="{{ text }}">{% for c in text | chars(size) %}<span class="flap" data-char="{{ c }}">{{ c }}</span>{% endfor %}</span>
+{%- endmacro -%}
+{%- macro row(show, past, s, lang, months) -%}
+{%- set parts = show.date.split("-") -%}
+{%- set dateText = parts[2] + " " + months[lang][(parts[1] | int) - 1] -%}
+{%- set status = "done" if past else show.status -%}
+<li class="board__row is-{{ status }}">
+  {{ flaps(dateText, 6, "date") }}
+  {{ flaps(show.city, 15, "city") }}
+  {{ flaps(show.venue, 14, "venue") }}
+  {{ flaps(s.live["status_" + status], 9, "status") }}
+  {% if not past and show.status == "onsale" and show.ticketsUrl %}
+  <a class="btn btn--primary btn--sm" href="{{ show.ticketsUrl }}" target="_blank" rel="noopener">{{ s.live.tickets }}</a>
+  {% else %}
+  <span class="btn btn--ghost btn--sm is-disabled" aria-disabled="true">{{ s.live["status_" + status] }}</span>
+  {% endif %}
+</li>
+{%- endmacro -%}
+{%- set upcoming = live.shows | upcoming(build.today) -%}
+{%- set pastShows = live.shows | past(build.today) -%}
+<section class="section live" id="live" aria-labelledby="live-title" data-live>
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <h2 class="section-title" id="live-title">{{ s.live.title }}</h2>
+      <p class="section-sub">{{ s.live.subtitle }}</p>
+    </header>
+    <div class="board" data-reveal>
+      <div class="board__bar">
+        <h3 data-board-title data-upcoming="{{ s.live.board | upper }}" data-past="{{ s.live.pastBoard | upper }}">{{ s.live.board | upper }}</h3>
+        <span class="board__clock">{{ s.live.localTime | upper }} <b data-clock>00:00</b></span>
+      </div>
+      <div class="board__head" aria-hidden="true">
+        <span>{{ s.live.date | upper }}</span><span>{{ s.live.destination | upper }}</span><span>{{ s.live.venue | upper }}</span><span>{{ s.live.status | upper }}</span><span></span>
+      </div>
+      <ul class="board__rows" data-board-list="upcoming">
+        {% for show in upcoming %}{{ row(show, false, s, lang, months) }}{% endfor %}
+        {% if not upcoming.length %}<li class="board__empty">{{ s.live.emptyUpcoming }}</li>{% endif %}
+      </ul>
+      {% if pastShows.length %}
+      <ul class="board__rows" data-board-list="past" hidden>
+        {% for show in pastShows %}{{ row(show, true, s, lang, months) }}{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="live__foot" data-reveal>
+      {% if pastShows.length %}
+      <button class="text-link" type="button" aria-pressed="false" data-board-toggle data-label-past="{{ s.live.past }}" data-label-upcoming="{{ s.live.showUpcoming }}">{{ s.live.past }}</button>
+      {% else %}<span></span>{% endif %}
+      <p>{{ s.live.ask }} <a class="btn btn--ghost" href="{{ anchorBase }}#booking">{{ s.live.booking }}</a></p>
+    </div>
+  </div>
+</section>

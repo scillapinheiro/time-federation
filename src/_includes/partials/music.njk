@@ -1,0 +1,80 @@
+{%- from "partials/macros.njk" import icon, cassette -%}
+{%- set releases = music.releases | byReleaseDesc -%}
+{%- set first = releases[0] -%}
+<section class="section music" id="music" aria-labelledby="music-title" data-music>
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <h2 class="section-title" id="music-title">{{ s.music.title }}</h2>
+      <p class="section-sub">{{ s.music.subtitle }}</p>
+    </header>
+    <div class="music__grid">
+      <div class="boombox-wrap" data-reveal>
+        <div class="boombox" data-boombox>
+          <span class="boombox__handle" aria-hidden="true"></span>
+          <div class="boombox__display">
+            <div class="boombox__readout" aria-live="polite">
+              <span class="boombox__state" data-bb-state>PLAY</span>
+              <span class="boombox__track" data-bb-title>{{ (first.label or first.title) | upper }}</span>
+            </div>
+            <span class="boombox__time" data-bb-time>00:00</span>
+            <div class="eq" aria-hidden="true">{% for i in range(0, 20) %}<span style="--i:{{ i }}"></span>{% endfor %}</div>
+            <div class="boombox__embed" data-bb-embed><div id="spotify-embed"></div></div>
+          </div>
+          <div class="boombox__body">
+            <div class="speaker" aria-hidden="true"><span></span></div>
+            <div class="boombox__center">
+              <div class="boombox__door" data-bb-door>
+                <span class="boombox__lid" aria-hidden="true" data-bb-lid></span>
+                <div class="boombox__tape" data-bb-tape>{{ cassette(first.label or first.title) }}</div>
+              </div>
+              <div class="keys" role="group" aria-label="Tape deck">
+                <button class="key" type="button" data-cmd="rew" aria-label="{{ s.music.rewind }}">{{ icon("i-rew") }}</button>
+                <button class="key key--play" type="button" data-cmd="play" aria-label="{{ s.music.play }}">{{ icon("i-play") }}</button>
+                <button class="key" type="button" data-cmd="pause" aria-label="{{ s.music.pause }}">{{ icon("i-pause") }}</button>
+                <button class="key" type="button" data-cmd="stop" aria-label="{{ s.music.stop }}">{{ icon("i-stop") }}</button>
+                <button class="key" type="button" data-cmd="ff" aria-label="{{ s.music.forward }}">{{ icon("i-ff") }}</button>
+              </div>
+            </div>
+            <div class="speaker" aria-hidden="true"><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rack" data-carousel data-reveal>
+        <div class="rack__head">
+          <h3 class="rack__title">{{ s.music.tapes }}</h3>
+          <span class="rack__hint">{{ releases.length }} TRACKS</span>
+        </div>
+        <div class="rack__stage">
+        <div class="rack__viewport" data-carousel-viewport>
+          <ul class="rack__track rack__track--cassette">
+            {% for r in releases %}
+            <li class="rack__item">
+              <button class="tape tape--cassette{% if loop.first %} is-playing{% endif %}" type="button"
+                data-tape data-spotify="{{ r.spotifyId }}" data-label="{{ (r.label or r.title) | upper }}"
+                aria-label="{{ s.music.play }}: {{ r.title }}, {{ r.artists }}"{% if loop.first %} aria-current="true"{% endif %}>
+                {{ cassette(r.label or r.title) }}
+                <span class="tape__slot" aria-hidden="true">{{ s.music.playing }}</span>
+              </button>
+              <p class="tape__title">{{ r.title }}</p>
+              <p class="tape__kicker tape__kicker--muted">{{ r.artists }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        </div>
+        <div class="rack__controls">
+          <div class="dots" data-carousel-dots></div>
+          <div class="rack__arrows">
+            <button class="carousel-btn carousel-btn--prev" type="button" aria-label="{{ s.music.prev }}" data-carousel-prev hidden>{{ icon("i-chevron-l") }}</button>
+            <button class="carousel-btn carousel-btn--next" type="button" aria-label="{{ s.music.next }}" data-carousel-next hidden>{{ icon("i-chevron-r") }}</button>
+          </div>
+        </div>
+        <p class="listen">
+          <span>{{ s.music.listenOn }}</span>
+          {% for net in (cmsSite.social or site.social) %}{% if net.icon != "instagram" %}<a href="{{ net.url }}" target="_blank" rel="noopener">{{ net.name | upper }}</a>{% endif %}{% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

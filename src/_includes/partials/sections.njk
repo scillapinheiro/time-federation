@@ -1,0 +1,9 @@
+{%- set showStore = store.enabled or build.preview -%}
+{%- set showLive = live.enabled or build.preview -%}
+{% include "partials/home.njk" %}
+{% include "partials/watch.njk" %}
+{% include "partials/music.njk" %}
+{% include "partials/gallery.njk" %}
+{% if showStore %}{% include "partials/store.njk" %}{% endif %}
+{% if showLive %}{% include "partials/live.njk" %}{% endif %}
+{% if bookingVariant == "form" %}{% include "partials/booking-form.njk" %}{% else %}{% include "partials/booking.njk" %}{% endif %}

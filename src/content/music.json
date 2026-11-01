@@ -1,0 +1,13 @@
+{
+  "source": "Spotify (artist 7xo7nFvxIFTkg5A1AxYA1j). Will be synced automatically; this list is the fallback.",
+  "releases": [
+    { "spotifyId": "0LM8ZdWlFMMZv3algC1Dps", "title": "Monkey Man", "artists": "Time Federation, H.A.N", "releaseDate": "2026-04-10" },
+    { "spotifyId": "7ub3OkzNUnBGS5AcF602Vz", "title": "Heaven (Time Federation Remix)", "label": "Heaven (Remix)", "artists": "Geluk, Time Federation", "releaseDate": "2025-07-25" },
+    { "spotifyId": "5iRDaaQhNyeOZmYwYDgvok", "title": "I Got It You Got It", "artists": "Silvio Soul, Meriva, Time Federation", "releaseDate": "2025-04-11" },
+    { "spotifyId": "1vgpuelprdGCx2YOB0bVQP", "title": "Anybody Wanna Dance?", "artists": "Time Federation", "releaseDate": "2025-01-24" },
+    { "spotifyId": "21QfuIcpvSXDGZizUFwcwA", "title": "Be Now (Radio Edit)", "label": "Be Now", "artists": "Sharam Jey, Time Federation", "releaseDate": "2025-01-10" },
+    { "spotifyId": "3ieOPg5r7dTUtYKBlQsSux", "title": "In Your Mind", "artists": "Meriva, Time Federation", "releaseDate": "2024-12-20" },
+    { "spotifyId": "74vRD37qy0ppjKiQnyFGae", "title": "Nations", "artists": "Time Federation", "releaseDate": "2024-08-16" },
+    { "spotifyId": "75ZiGMLmQp38DvwKGJFzbA", "title": "Existence", "artists": "Galluxy, Time Federation", "releaseDate": "2024-07-19" }
+  ]
+}

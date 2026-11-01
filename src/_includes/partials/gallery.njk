@@ -1,0 +1,31 @@
+{%- from "partials/macros.njk" import icon -%}
+<section class="section gallery" id="gallery" aria-labelledby="gallery-title" data-gallery>
+  <div class="container gallery__grid">
+    <div class="gallery__intro" data-reveal>
+      <h2 class="section-title" id="gallery-title">{{ s.gallery.title }}</h2>
+      <p class="section-sub">{{ s.gallery.subtitle }}</p>
+      <p class="gallery__count">{{ gallery.photos.length }} {{ s.gallery.count | upper }}</p>
+      <button class="btn btn--ghost" type="button" data-gallery-open="0">{{ s.gallery.viewAll }}</button>
+    </div>
+    <ul class="mosaic" data-reveal>
+      {% for p in gallery.mosaic %}
+      <li class="mosaic__item mosaic__item--{{ loop.index0 }}">
+        <button type="button" data-gallery-open="{{ p.index }}" aria-label="{{ s.gallery.open }}: {{ p.alt | t(lang) }}">
+          <img src="{{ p.srcSm }}" srcset="{{ p.srcSm }} 800w, {{ p.src }} 1600w"{% if p.position %} style="object-position: {{ p.position }}"{% endif %} sizes="(min-width: 1024px) 40vw, 90vw" alt="{{ p.alt | t(lang) }}" loading="lazy" decoding="async">
+          {{ icon("i-expand", "mosaic__expand") }}
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <dialog class="lightbox" data-lightbox aria-label="{{ s.gallery.title }}">
+    <figure class="lightbox__figure">
+      <img data-lightbox-img alt="">
+      <figcaption><span data-lightbox-count></span></figcaption>
+    </figure>
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="{{ s.gallery.close }}" data-lightbox-close>{{ icon("i-close") }}</button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="{{ s.gallery.prev }}" data-lightbox-prev>{{ icon("i-chevron-l") }}</button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="{{ s.gallery.next }}" data-lightbox-next>{{ icon("i-chevron-r") }}</button>
+  </dialog>
+  <script type="application/json" data-gallery-data>{{ gallery.photos | dump | safe }}</script>
+</section>

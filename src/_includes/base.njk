@@ -1,0 +1,43 @@
+{%- set s = i18n[lang] -%}
+{%- set other = "pt" if lang == "en" else "en" -%}
+{%- set onHome = pageType == "home" -%}
+{%- set anchorBase = "" if onHome else "/" + lang + "/" -%}
+{%- set showStore = store.enabled or build.preview -%}
+{%- set showLive = live.enabled or build.preview -%}
+<!doctype html>
+<html lang="{{ s.htmlLang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ pageTitle or site.name }}</title>
+  {%- set shareText = (cmsSite.shareText | t(lang)) if cmsSite.shareText else s.metaDescription -%}
+  <meta name="description" content="{{ shareText or s.metaDescription }}">
+  <meta name="theme-color" content="#050303">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url | replace('/' + lang + '/', '/en/') }}">
+  <link rel="alternate" hreflang="pt-BR" href="{{ site.url }}{{ page.url | replace('/' + lang + '/', '/pt/') }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ site.name }}">
+  <meta property="og:description" content="{{ shareText or s.metaDescription }}">
+  <meta property="og:image" content="{{ cmsSite.shareImage + '?w=1200&h=630&fit=crop' if cmsSite.shareImage else site.url + '/assets/img/gallery/img_0438.webp' }}">
+  <link rel="icon" type="image/png" href="/assets/img/tf-logo-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="page-{{ pageType }}">
+  {% include "partials/symbols.njk" %}
+  <a class="skip-link" href="#main">{{ s.skip }}</a>
+  {% include "partials/background.njk" %}
+  {% include "partials/nav.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <p>© {{ build.year }} {{ site.name }}. {{ s.footer }}.</p>
+  </footer>
+  <script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

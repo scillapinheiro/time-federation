@@ -1,0 +1,18 @@
+{
+  "enabled": false,
+  "product": {
+    "name": "Time Federation Bomber",
+    "kicker": { "en": "Official jacket", "pt": "Jaqueta oficial" },
+    "description": {
+      "en": "The same jacket the trio wears on stage. Hourglass embroidered on the back and on the left chest. Available in red and black.",
+      "pt": "A mesma jaqueta que o trio usa no palco. Ampulheta bordada nas costas e no lado esquerdo do peito. Disponível em vermelho e preto."
+    },
+    "shopifyUrl": "",
+    "photos": [
+      { "file": "083a4208", "crop": "center", "alt": { "en": "Back of the jacket with the embroidered hourglass", "pt": "Costas da jaqueta com a ampulheta bordada" } },
+      { "file": "083a4208", "crop": "detail", "alt": { "en": "Embroidery detail", "pt": "Detalhe do bordado" } },
+      { "file": "083a4168", "crop": "center", "alt": { "en": "Red and black jackets on a rack", "pt": "Jaquetas vermelhas e pretas na arara" } },
+      { "file": "083a3861", "crop": "center", "alt": { "en": "The jacket being worn", "pt": "A jaqueta em uso" } }
+    ]
+  }
+}

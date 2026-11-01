@@ -1,0 +1,21 @@
+---
+pagination:
+  data: site.languages
+  size: 1
+  alias: lang
+permalink: "/{{ lang }}/booking/thanks/"
+layout: base.njk
+pageType: booking
+eleventyComputed:
+  pageTitle: "{{ i18n[lang].booking.thanksTitle }} | {{ site.name }}"
+---
+{%- set s = i18n[lang] -%}
+<section class="section booking booking--thanks">
+  <div class="planet" aria-hidden="true"></div>
+  <div class="container booking__content">
+    <img class="thanks__logo" src="/assets/img/tf-logo-512.png" alt="" width="96" height="96">
+    <h1 class="section-title">{{ s.booking.thanksTitle }}</h1>
+    <p class="booking__lead booking__lead--sm">{{ s.booking.thanksText }}</p>
+    <a class="btn btn--ghost" href="/{{ lang }}/">{{ s.booking.back }}</a>
+  </div>
+</section>

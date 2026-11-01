@@ -1,0 +1,22 @@
+# dependencies and build output
+node_modules/
+_site/
+
+# environment and secrets
+.env
+.env.*
+!.env.example
+
+# local tooling and internal notes (never commit)
+.netlify/
+.claude/
+docs/
+memory/
+.cache/
+*.log
+.DS_Store
+Thumbs.db
+
+# Sanity Studio build output
+studio/dist/
+studio/.sanity/
