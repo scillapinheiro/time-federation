@@ -1,100 +1,130 @@
-# Time Federation
+<p align="center">
+  <img src="src/assets/img/tf-logo-512.png" width="120" alt="Ampulheta, símbolo oficial da Time Federation">
+</p>
 
-Official website of **Time Federation**, an electronic music trio whose identity mixes 80s synthesizers, synthwave aesthetics and time travel. The site is the band's hub for fans and event bookers: videos, music, photos, merch, tour dates and booking.
+<h1 align="center">Time Federation</h1>
 
-> **Em português:** site oficial do trio Time Federation. Feito com Eleventy (HTML, CSS e JavaScript puro), conteúdo gerenciado no Sanity e publicado na Netlify. Bilíngue (inglês e português), mobile first, com animações inspiradas em mídias dos anos 80: fitas VHS, fitas cassete e painéis de aeroporto.
+<p align="center">
+  <a href="#computer-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bulb-como-funciona">Como funciona</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sparkles-funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#eyes-site">Site</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bookmark-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-licença">Licença</a>
+</p>
 
-## Highlights
+<p align="center">
+  <img alt="Licença" src="https://img.shields.io/static/v1?label=licen%C3%A7a&message=todos%20os%20direitos%20reservados&color=FF2A1A&labelColor=grey">
+  <img alt="Idiomas" src="https://img.shields.io/static/v1?label=idiomas&message=EN%20%7C%20PT&color=FF2A1A&labelColor=grey">
+  <img alt="CMS" src="https://img.shields.io/static/v1?label=cms&message=Sanity&color=FF2A1A&labelColor=grey">
+  <img alt="Pull requests" src="https://img.shields.io/static/v1?label=pull%20requests&message=n%C3%A3o%20aceitos&color=lightgrey&labelColor=grey">
+</p>
 
-- **Home:** a time tunnel that never stops moving, with the official hourglass drawing itself on load and a 1980 to NOW timeline.
-- **Watch:** every video is a VHS tape. Pick one and it flies into the VCR, the CRT TV turns on with static and the video plays with custom controls (YouTube IFrame API).
-- **Music:** every release is a cassette. It drops into the boombox and plays through Spotify's official embed, with spinning reels and a live equalizer driven by playback state.
-- **Gallery:** mosaic with a keyboard and swipe friendly lightbox.
-- **Live:** a split-flap departures board that flips into place when it comes into view, with upcoming and past shows.
-- **Store:** product page that hands checkout over to Shopify.
-- **Booking:** WhatsApp or a form handled by Netlify Forms.
+<p align="center">
+  <img src=".github/readme/mockup.jpg" width="100%" alt="Mockup do site da Time Federation em desktop e celular">
+</p>
 
-Only one player plays at a time, and video or music pauses when its section leaves the screen. Long racks of tapes become carousels that always show a slice of what comes next.
+## :computer: Projeto
 
-## Stack
+Site oficial da **Time Federation**, trio de música eletrônica que mistura sintetizadores dos anos 80, synthwave e a ideia de viagem no tempo. **WE ARE HERE, WE ARE NOW.**
 
-| Layer | Choice |
-| --- | --- |
-| Site | [Eleventy 3](https://www.11ty.dev/) with Nunjucks, plain CSS and vanilla JavaScript (ES modules), no framework |
-| Content | [Sanity](https://www.sanity.io/) (Studio in `studio/`) with local JSON fallback |
-| Hosting | Netlify (builds, deploy previews, forms) |
-| Media | YouTube IFrame API, Spotify iFrame API, Sanity image CDN (WebP, resized per screen) |
+A banda já tinha um press kit para contratantes. Este site é outra coisa: o ponto de encontro dos fãs e de quem quer levar o show para o seu evento. Ali ficam os vídeos, as músicas, as fotos, a agenda, a loja e o booking.
 
-## How content flows
+A direção visual nasceu do próprio conceito da banda: em vez de cards e players genéricos, cada mídia aparece como era nos anos 80. Os vídeos são **fitas VHS** que entram num videocassete e passam numa **TV de tubo**; as músicas são **fitas cassete** que tocam num **rádio**; a agenda é um **painel de aeroporto** com plaquinhas que viram.
 
-```
-Editor publishes in Sanity Studio
-  > Sanity webhook calls a Netlify build hook
-  > Eleventy fetches all content in one GROQ query at build time
-  > static pages for /en/ and /pt/ are published
-```
+## :bulb: Como funciona
 
-If Sanity cannot be reached, the build falls back to the JSON files in `src/content/`, so the site never breaks.
+- **A equipe edita sem mexer em código.** Todo o conteúdo (vídeos, músicas, fotos, shows, loja, WhatsApp e redes) fica no **Sanity**, um painel online onde a banda entra com e-mail ou Google, preenche e clica em *Publish*.
+- **O site se atualiza sozinho.** Ao publicar, o Sanity avisa a Netlify, que monta o site de novo em cerca de um minuto, com as páginas já prontas em inglês e português.
+- **Nunca fica fora do ar por causa do painel.** Se o Sanity não responder na hora de montar o site, ele usa uma cópia do conteúdo que fica no próprio projeto.
+- **Um player por vez.** Ao dar play numa música, o vídeo pausa, e vice-versa. Ao sair da seção, o que estiver tocando também pausa.
+- **Testa antes de publicar.** O painel tem uma área de Produção e uma de Homologação. A homologação alimenta a branch `hml` e os links de pré-visualização, então dá para testar conteúdo e código sem mexer no site oficial.
 
-## Design and engineering decisions
+## :sparkles: Funcionalidades
 
-- **Mobile first,** with dedicated layouts for tablet (768px) and desktop (1200px). Desktop sections fit the viewport; content-heavy ones grow naturally.
-- **Bilingual by URL** (`/en/`, `/pt/`), with the visitor's language detected at the root.
-- **Performance:** no framework runtime, players load only on first play, images come resized and in WebP from the CDN, background art is lightweight SVG.
-- **Accessibility:** semantic HTML, keyboard support, visible focus, labelled controls, and `prefers-reduced-motion` respected without removing the storytelling animations (looping, pulsing and flashing effects are turned off; tape insertion and the hourglass drawing stay).
-- **Feature flags:** Store and Live can be switched on or off from the CMS. Netlify deploy previews always show them for review.
+**Seções do site**
 
-## Project structure
+| Seção | O que tem |
+|---|---|
+| **Home** | Túnel do tempo em movimento, a ampulheta oficial se desenhando ao abrir e uma régua de 1980 até NOW |
+| **Watch** | Live set e série documental como fitas VHS. A fita escolhida voa até o videocassete, entra pela abertura e a TV liga com chiado antes do vídeo começar |
+| **Music** | Lançamentos como fitas cassete, do mais novo para o mais antigo. A fita cai no rádio, os carretéis giram e o equalizador acompanha a música (player oficial do Spotify) |
+| **Gallery** | Mosaico de fotos com ampliação em tela cheia, navegável por teclado e por gesto no celular |
+| **Store** | Página da jaqueta oficial, com a compra feita no Shopify |
+| **Live** | Agenda num painel de aeroporto que vira as plaquinhas ao aparecer na tela, com próximos shows e shows anteriores |
+| **Booking** | Duas formas de contratar: WhatsApp direto ou formulário |
 
-```
-src/
-  _data/         data files (read Sanity, fall back to src/content)
-  _includes/     layout and one partial per section
-  assets/        css, js modules, images and background svgs
-  content/       local fallback content (JSON)
-studio/          Sanity Studio: schemas and desk structure
-lib/cms.js       Sanity query and helpers
-netlify.toml     build, redirects and deploy contexts
-```
+**Detalhes que fazem diferença**
 
-## Run locally
+- **Mobile first**, com telas pensadas para celular, tablet e desktop.
+- **Bilíngue**: `/en/` e `/pt/`, com o idioma escolhido automaticamente na primeira visita.
+- **Prateleiras com carrossel**: quando há mais fitas do que cabem na tela, um pedaço da próxima aparece cortado na borda, para ficar claro que tem mais.
+- **Store e Live com chave liga/desliga** no painel, para entrar no ar só quando houver produto e agenda.
+- **Acessível**: navegação por teclado, foco visível e respeito à opção *reduzir movimento* do sistema, que desliga o que pisca e se repete, mas mantém as animações que contam a história.
+- **Leve**: sem framework no navegador, players carregados só no primeiro play e fotos entregues no tamanho certo de cada tela.
 
-Requires Node.js 22 or newer.
+## :eyes: Site
 
-```bash
-npm install
-npm run dev        # http://localhost:8080/en/
-npm run preview    # also shows sections switched off in production
-npm run build      # production build in _site/
-```
+Você pode acessar o site [aqui](https://timefederation.netlify.app/).
 
-Set `SANITY_DISABLED=1` to build from the local JSON content only.
+## :rocket: Tecnologias
 
-Sanity Studio:
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-```bash
-cd studio
-npm install
-npm run dev        # http://localhost:3333
-npm run deploy     # publish the Studio after schema changes
-```
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Eleventy](https://img.shields.io/badge/eleventy-%23222222.svg?style=for-the-badge&logo=eleventy&logoColor=white) ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Sanity](https://img.shields.io/badge/sanity-%23F03E2F.svg?style=for-the-badge&logo=sanity&logoColor=white) ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=%2300C7B7) ![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white) ![Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## Environments
+<details>
+<summary>Para quem quer mexer no código</summary>
 
-| Branch | Purpose |
-| --- | --- |
-| `main` | Production |
-| `hml` | Staging, mirrors production |
-| feature branches | Pull requests into `hml` get a Netlify deploy preview |
+Você precisa do [Node.js](https://nodejs.org/) 22 ou mais novo.
 
-Secrets (Spotify credentials) live in Netlify environment variables, never in the repository.
+    npm install
+    npm run dev        # site em http://localhost:8080/en/
+    npm run preview    # mostra também Store e Live, que ficam desligadas em produção
+    npm run build      # versão de produção na pasta _site/
 
-## Credits
+Com `SANITY_DISABLED=1`, o site é montado só com o conteúdo local, sem consultar o Sanity.
 
-Design and development by Priscilla Pinheiro for Time Federation.
+Painel do Sanity:
 
-## License
+    cd studio
+    npm install
+    npm run dev        # painel em http://localhost:3333
+    npm run deploy     # publica o painel depois de mudar a estrutura dos campos
 
-The source code is released under the [MIT License](LICENSE).
+**Onde fica cada coisa**
 
-The Time Federation name, logo, photography, music and other brand assets are © Time Federation, all rights reserved, and are **not** covered by the MIT License.
+    src/_data/        dados de cada seção (lê o Sanity e, se falhar, src/content)
+    src/_includes/    estrutura da página e uma parte para cada seção
+    src/assets/       CSS, JavaScript, imagens e os SVGs do fundo
+    src/content/      cópia local do conteúdo (JSON)
+    studio/           painel do Sanity: campos e organização das seções
+    lib/cms.js        consulta ao Sanity e funções de apoio
+    netlify.toml      build, redirecionamento por idioma e ambientes
+
+**Ambientes**
+
+| Branch | Para que serve | Painel do Sanity |
+|---|---|---|
+| `main` | Produção | Produção |
+| `hml` | Homologação | Homologação |
+| outras | Cada pull request para a `hml` ganha um link de pré-visualização na Netlify | Homologação |
+
+O painel tem duas áreas, com o mesmo formato: **Produção** alimenta o site oficial e **Homologação** serve para testar conteúdo sem mexer no que está no ar.
+
+Chaves de serviços externos ficam nas variáveis de ambiente da Netlify, nunca no repositório.
+
+</details>
+
+## :bookmark: Layout
+
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/design/un7oelDJ5ErgD39d34ecfT/Time-Federation). Lembrando que você precisa ter uma conta no [Figma](https://www.figma.com/) para acessá-lo.
+
+## :memo: Licença
+
+Copyright (c) 2026 Priscilla Pinheiro. Todos os direitos reservados.
+
+O código está público apenas para visualização, como portfólio. Não é permitido copiar, modificar ou usar este código em outros projetos sem autorização. Veja o arquivo [LICENSE](LICENSE).
+
+O nome Time Federation, a ampulheta, as fotos, as músicas e os demais elementos da marca pertencem à **Time Federation**, com todos os direitos reservados.
