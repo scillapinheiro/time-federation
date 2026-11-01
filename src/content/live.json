@@ -1,0 +1,53 @@
+{
+  "enabled": false,
+  "shows": [
+    {
+      "date": "2026-12-01",
+      "city": "City, Country",
+      "venue": "Venue name",
+      "status": "onsale",
+      "ticketsUrl": "#",
+      "sample": true
+    },
+    {
+      "date": "2026-12-08",
+      "city": "City, Country",
+      "venue": "Venue name",
+      "status": "onsale",
+      "ticketsUrl": "#",
+      "sample": true
+    },
+    {
+      "date": "2026-12-15",
+      "city": "City, Country",
+      "venue": "Venue name",
+      "status": "soldout",
+      "ticketsUrl": "",
+      "sample": true
+    },
+    {
+      "date": "2027-01-10",
+      "city": "City, Country",
+      "venue": "Venue name",
+      "status": "soon",
+      "ticketsUrl": "",
+      "sample": true
+    },
+    {
+      "date": "2026-09-20",
+      "city": "City, Country",
+      "venue": "Venue name",
+      "status": "soldout",
+      "ticketsUrl": "",
+      "sample": true
+    },
+    {
+      "date": "2026-08-02",
+      "city": "City, Country",
+      "venue": "Venue name",
+      "status": "soldout",
+      "ticketsUrl": "",
+      "sample": true
+    }
+  ]
+}

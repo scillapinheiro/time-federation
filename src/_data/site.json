@@ -2,13 +2,36 @@
   "name": "Time Federation",
   "url": "https://timefederation.netlify.app",
   "slogan": "WE ARE HERE, WE ARE NOW",
-  "languages": ["en", "pt"],
+  "languages": [
+    "en",
+    "pt"
+  ],
   "social": [
-    { "name": "Spotify", "icon": "spotify", "url": "https://open.spotify.com/artist/7xo7nFvxIFTkg5A1AxYA1j" },
-    { "name": "SoundCloud", "icon": "soundcloud", "url": "https://soundcloud.com/timefederationlive" },
-    { "name": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/timefederation" },
-    { "name": "YouTube", "icon": "youtube", "url": "https://www.youtube.com/@Timefederation" }
+    {
+      "name": "Spotify",
+      "icon": "spotify",
+      "url": "https://open.spotify.com/artist/7xo7nFvxIFTkg5A1AxYA1j"
+    },
+    {
+      "name": "SoundCloud",
+      "icon": "soundcloud",
+      "url": "https://soundcloud.com/timefederationlive"
+    },
+    {
+      "name": "Instagram",
+      "icon": "instagram",
+      "url": "https://www.instagram.com/timefederation"
+    },
+    {
+      "name": "YouTube",
+      "icon": "youtube",
+      "url": "https://www.youtube.com/@Timefederation"
+    }
   ],
   "spotifyArtistId": "7xo7nFvxIFTkg5A1AxYA1j",
-  "youtubeChannel": "https://www.youtube.com/@Timefederation"
+  "youtubeChannel": "https://www.youtube.com/@Timefederation",
+  "sanity": {
+    "projectId": "ig03yas6",
+    "dataset": "production"
+  }
 }

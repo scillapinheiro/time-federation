@@ -68,7 +68,7 @@
             <button class="carousel-btn carousel-btn--next" type="button" aria-label="{{ s.watch.next }}" data-carousel-next hidden>{{ icon("i-chevron-r") }}</button>
           </div>
         </div>
-        <a class="btn btn--primary btn--block" href="{{ site.youtubeChannel }}" target="_blank" rel="noopener">
+        <a class="btn btn--primary btn--block" href="{{ cmsSite.youtubeChannel or site.youtubeChannel }}" target="_blank" rel="noopener">
           <span class="btn__icon">{% include "icons/youtube.svg" %}</span>{{ s.watch.youtube }}
         </a>
       </div>

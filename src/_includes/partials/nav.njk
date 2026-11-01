@@ -22,7 +22,7 @@
     </div>
     <span class="nav__divider" aria-hidden="true"></span>
     <ul class="social">
-      {% for net in site.social %}
+      {% for net in (cmsSite.social or site.social) %}
       <li><a href="{{ net.url }}" target="_blank" rel="noopener" aria-label="{{ net.name }}">{% include "icons/" + net.icon + ".svg" %}</a></li>
       {% endfor %}
     </ul>
@@ -46,7 +46,7 @@
       <a href="{{ page.url | replace('/' + lang + '/', '/pt/') }}" hreflang="pt-BR" {% if lang == "pt" %}aria-current="true"{% endif %} data-lang-link>PT</a>
     </div>
     <ul class="social social--boxed">
-      {% for net in site.social %}
+      {% for net in (cmsSite.social or site.social) %}
       <li><a href="{{ net.url }}" target="_blank" rel="noopener" aria-label="{{ net.name }}">{% include "icons/" + net.icon + ".svg" %}</a></li>
       {% endfor %}
     </ul>

@@ -72,7 +72,7 @@
         </div>
         <p class="listen">
           <span>{{ s.music.listenOn }}</span>
-          {% for net in site.social %}{% if net.icon != "instagram" %}<a href="{{ net.url }}" target="_blank" rel="noopener">{{ net.name | upper }}</a>{% endif %}{% endfor %}
+          {% for net in (cmsSite.social or site.social) %}{% if net.icon != "instagram" %}<a href="{{ net.url }}" target="_blank" rel="noopener">{{ net.name | upper }}</a>{% endif %}{% endfor %}
         </p>
       </div>
     </div>

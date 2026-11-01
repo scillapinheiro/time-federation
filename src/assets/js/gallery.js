@@ -12,7 +12,7 @@ export function initGallery() {
   const show = (i) => {
     index = (i + photos.length) % photos.length;
     const p = photos[index];
-    img.src = `/assets/img/gallery/${p.file}.webp`;
+    img.src = p.src;
     img.alt = p.alt[lang] || p.alt.en;
     count.textContent = `${String(index + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`;
   };

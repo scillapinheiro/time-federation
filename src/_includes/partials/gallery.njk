@@ -8,14 +8,14 @@
       <button class="btn btn--ghost" type="button" data-gallery-open="0">{{ s.gallery.viewAll }}</button>
     </div>
     <ul class="mosaic" data-reveal>
-      {% for p in gallery.photos %}{% if loop.index0 < 7 %}
+      {% for p in gallery.mosaic %}
       <li class="mosaic__item mosaic__item--{{ loop.index0 }}">
-        <button type="button" data-gallery-open="{{ loop.index0 }}" aria-label="{{ s.gallery.open }}: {{ p.alt | t(lang) }}">
-          <img src="/assets/img/gallery/{{ p.file }}-sm.webp" srcset="/assets/img/gallery/{{ p.file }}-sm.webp 800w, /assets/img/gallery/{{ p.file }}.webp 1600w" sizes="(min-width: 1024px) 40vw, 90vw" alt="{{ p.alt | t(lang) }}" loading="lazy" decoding="async">
+        <button type="button" data-gallery-open="{{ p.index }}" aria-label="{{ s.gallery.open }}: {{ p.alt | t(lang) }}">
+          <img src="{{ p.srcSm }}" srcset="{{ p.srcSm }} 800w, {{ p.src }} 1600w"{% if p.position %} style="object-position: {{ p.position }}"{% endif %} sizes="(min-width: 1024px) 40vw, 90vw" alt="{{ p.alt | t(lang) }}" loading="lazy" decoding="async">
           {{ icon("i-expand", "mosaic__expand") }}
         </button>
       </li>
-      {% endif %}{% endfor %}
+      {% endfor %}
     </ul>
   </div>
   <dialog class="lightbox" data-lightbox aria-label="{{ s.gallery.title }}">

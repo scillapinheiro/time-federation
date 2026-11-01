@@ -29,3 +29,7 @@
 
 [context.branch-deploy.environment]
   PREVIEW = "1"
+
+# Staging (hml) mirrors production: Store and Live stay hidden.
+[context.hml.environment]
+  PREVIEW = "0"

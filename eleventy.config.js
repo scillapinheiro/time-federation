@@ -20,8 +20,17 @@ export default function (eleventyConfig) {
     Array.from({ length: to - from + 1 }, (_, i) => from + i)
   );
 
+  // Shows split by the build date: upcoming soonest first, past most recent first
+  eleventyConfig.addFilter("upcoming", (shows, today) =>
+    shows.filter((s) => s.date >= today).sort((a, b) => a.date.localeCompare(b.date))
+  );
+  eleventyConfig.addFilter("past", (shows, today) =>
+    shows.filter((s) => s.date < today).sort((a, b) => b.date.localeCompare(a.date))
+  );
+
   eleventyConfig.addGlobalData("build", () => ({
     year: new Date().getFullYear(),
+    today: new Date().toISOString().slice(0, 10),
     preview: process.env.PREVIEW === "1",
   }));
 

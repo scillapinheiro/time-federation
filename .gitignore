@@ -16,3 +16,7 @@ memory/
 *.log
 .DS_Store
 Thumbs.db
+
+# Sanity Studio build output
+studio/dist/
+studio/.sanity/

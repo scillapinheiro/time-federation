@@ -19,7 +19,7 @@ export function initLive() {
 
   if (!("IntersectionObserver" in window)) return;
 
-  const rows = [...root.querySelectorAll(".board__row")];
+  let rows = [...root.querySelectorAll("[data-board-list]:not([hidden]) .board__row")];
 
   const spinFlap = (flap, steps, delay) =>
     new Promise((resolve) => {
@@ -39,6 +39,23 @@ export function initLive() {
 
   const spinRow = (row, rowDelay = 0, steps = 6) =>
     Promise.all([...row.querySelectorAll(".flap")].map((f, i) => spinFlap(f, steps + (i % 5), rowDelay + i * 35)));
+
+  // "Past shows" swaps the board to the shows that already happened
+  const toggle = root.querySelector("[data-board-toggle]");
+  const title = root.querySelector("[data-board-title]");
+  toggle?.addEventListener("click", () => {
+    const showPast = toggle.getAttribute("aria-pressed") !== "true";
+    // Keep the board height so the page does not jump when the list is shorter
+    const board = root.querySelector(".board");
+    board.style.minHeight = `${Math.max(board.offsetHeight, parseFloat(board.style.minHeight) || 0)}px`;
+    toggle.setAttribute("aria-pressed", String(showPast));
+    toggle.textContent = showPast ? toggle.dataset.labelUpcoming : toggle.dataset.labelPast;
+    title.textContent = showPast ? title.dataset.past : title.dataset.upcoming;
+    root.querySelector('[data-board-list="upcoming"]').hidden = showPast;
+    root.querySelector('[data-board-list="past"]').hidden = !showPast;
+    rows = [...root.querySelectorAll("[data-board-list]:not([hidden]) .board__row")];
+    rows.forEach((row, i) => spinRow(row, i * 200, 8));
+  });
 
   let idle = null;
   const startIdle = () => {

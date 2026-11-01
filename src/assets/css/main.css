@@ -550,7 +550,9 @@ body.menu-open { overflow: hidden; }
 }
 .flap::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgb(0 0 0 / 0.8); }
 .flaps--date .flap, .is-onsale .flaps--status .flap { color: var(--red); }
-.board__row.is-soldout .flap { opacity: 0.45; }
+.board__row.is-soldout .flap, .board__row.is-done .flap { opacity: 0.45; }
+.board__empty { padding: 28px 0; font: 13px var(--font-mono); letter-spacing: 0.18em; color: var(--faint); text-transform: uppercase; }
+button.text-link { cursor: pointer; font-family: var(--font-body); }
 .flaps--city .flap:nth-child(n+14), .flaps--venue .flap:nth-child(n+13) { display: none; }
 .flaps--status .flap { width: 14px; height: 22px; font-size: 10px; background: none; }
 .flaps--status .flap::after { display: none; }

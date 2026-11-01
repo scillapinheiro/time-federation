@@ -14,12 +14,12 @@
     </div>
     <div class="store__media" data-reveal>
       <figure class="store__main">
-        <img src="/assets/img/gallery/{{ p.photos[0].file }}.webp" alt="{{ p.photos[0].alt | t(lang) }}" loading="lazy" decoding="async" data-store-main class="crop-{{ p.photos[0].crop }}">
+        <img src="{{ p.photos[0].src }}" alt="{{ p.photos[0].alt | t(lang) }}" loading="lazy" decoding="async" data-store-main class="crop-{{ p.photos[0].crop }}"{% if p.photos[0].position %} style="object-position: {{ p.photos[0].position }}"{% endif %}>
       </figure>
       <ul class="store__thumbs">
         {% for ph in p.photos %}{% if not loop.first %}
-        <li><button type="button" aria-label="{{ s.store.photo }}: {{ ph.alt | t(lang) }}" data-store-thumb data-src="/assets/img/gallery/{{ ph.file }}.webp" data-crop="{{ ph.crop }}" data-alt="{{ ph.alt | t(lang) }}">
-          <img src="/assets/img/gallery/{{ ph.file }}-sm.webp" alt="" loading="lazy" class="crop-{{ ph.crop }}">
+        <li><button type="button" aria-label="{{ s.store.photo }}: {{ ph.alt | t(lang) }}" data-store-thumb data-src="{{ ph.src }}" data-crop="{{ ph.crop }}" data-alt="{{ ph.alt | t(lang) }}">
+          <img src="{{ ph.srcSm }}" alt="" loading="lazy" class="crop-{{ ph.crop }}">
         </button></li>
         {% endif %}{% endfor %}
       </ul>
