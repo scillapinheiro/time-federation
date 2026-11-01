@@ -4,12 +4,15 @@ import {schemaTypes, singletons} from './schemaTypes'
 
 const singletonIds = new Set(singletons.map((s) => s.id))
 
-export default defineConfig({
-  name: 'default',
-  title: 'Time Federation',
+// Two panels: production feeds the live site, staging feeds hml and test links
+const workspace = ({name, title, subtitle, dataset}) => ({
+  name,
+  title,
+  subtitle,
+  basePath: `/${name}`,
 
   projectId: 'ig03yas6',
-  dataset: 'production',
+  dataset,
 
   plugins: [
     structureTool({
@@ -31,3 +34,8 @@ export default defineConfig({
       singletonIds.has(schemaType) ? actions.filter(({action}) => !['duplicate', 'delete', 'unpublish'].includes(action)) : actions,
   },
 })
+
+export default defineConfig([
+  workspace({name: 'producao', title: 'Produção', subtitle: 'Site oficial', dataset: 'production'}),
+  workspace({name: 'homologacao', title: 'Homologação', subtitle: 'Site de testes (hml)', dataset: 'staging'}),
+])

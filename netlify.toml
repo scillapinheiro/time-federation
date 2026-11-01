@@ -22,14 +22,18 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Test links (branch deploys and pull request previews) also show the
-# sections that are switched off in production (Store, Live).
+# Test links (branch deploys and pull request previews) read the staging
+# panel and also show the sections switched off in production (Store, Live).
 [context.deploy-preview.environment]
   PREVIEW = "1"
+  SANITY_DATASET = "staging"
 
 [context.branch-deploy.environment]
   PREVIEW = "1"
+  SANITY_DATASET = "staging"
 
-# Staging (hml) mirrors production: Store and Live stay hidden.
+# Staging (hml) reads the staging panel and behaves like production:
+# Store and Live follow their switches in that panel.
 [context.hml.environment]
   PREVIEW = "0"
+  SANITY_DATASET = "staging"
