@@ -32,7 +32,11 @@ export function initLive() {
         flap.classList.add("is-flipping");
         flap.textContent = left > 0 ? GLYPHS[Math.floor(Math.random() * GLYPHS.length)] : target;
         if (left-- > 0) setTimeout(step, 85);
-        else resolve();
+        else {
+          // Drop the fold shadow once the last flip ends, so the letter reads fully white
+          setTimeout(() => flap.classList.remove("is-flipping"), 90);
+          resolve();
+        }
       };
       setTimeout(step, delay);
     });

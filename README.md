@@ -69,7 +69,7 @@ A direção visual nasceu do próprio conceito da banda: em vez de cards e playe
 
 ## :eyes: Site
 
-Você pode acessar o site [aqui](https://timefederation.netlify.app/).
+Você pode acessar o site [aqui](https://timefederation.com.br/).
 
 ## :rocket: Tecnologias
 
