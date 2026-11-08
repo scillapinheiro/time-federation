@@ -9,7 +9,6 @@ export default async function () {
   }
   const s = cms.store;
   return {
-    enabled: cms.settings?.showStore === true,
     product: {
       name: s.name,
       kicker: s.kicker,

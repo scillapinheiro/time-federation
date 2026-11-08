@@ -4,8 +4,8 @@
 <section class="section music" id="music" aria-labelledby="music-title" data-music>
   <div class="container">
     <header class="section-head" data-reveal>
-      <h2 class="section-title" id="music-title">{{ s.music.title }}</h2>
-      <p class="section-sub">{{ s.music.subtitle }}</p>
+      <h2 class="section-title" id="music-title">{{ s.music.title | sectionText(sections, "music", "title", lang) }}</h2>
+      <p class="section-sub">{{ s.music.subtitle | sectionText(sections, "music", "subtitle", lang) }}</p>
     </header>
     <div class="music__grid">
       <div class="boombox-wrap" data-reveal>
@@ -25,7 +25,7 @@
             <div class="boombox__center">
               <div class="boombox__door" data-bb-door>
                 <span class="boombox__lid" aria-hidden="true" data-bb-lid></span>
-                <div class="boombox__tape" data-bb-tape>{{ cassette(first.label or first.title) }}</div>
+                <div class="boombox__tape" data-bb-tape>{{ cassette(first.title) }}</div>
               </div>
               <div class="keys" role="group" aria-label="Tape deck">
                 <button class="key" type="button" data-cmd="rew" aria-label="{{ s.music.rewind }}">{{ icon("i-rew") }}</button>
@@ -43,7 +43,6 @@
       <div class="rack" data-carousel data-reveal>
         <div class="rack__head">
           <h3 class="rack__title">{{ s.music.tapes }}</h3>
-          <span class="rack__hint">{{ releases.length }} TRACKS</span>
         </div>
         <div class="rack__stage">
         <div class="rack__viewport" data-carousel-viewport>
@@ -53,10 +52,9 @@
               <button class="tape tape--cassette{% if loop.first %} is-playing{% endif %}" type="button"
                 data-tape data-spotify="{{ r.spotifyId }}" data-label="{{ (r.label or r.title) | upper }}"
                 aria-label="{{ s.music.play }}: {{ r.title }}, {{ r.artists }}"{% if loop.first %} aria-current="true"{% endif %}>
-                {{ cassette(r.label or r.title) }}
+                {{ cassette(r.title) }}
                 <span class="tape__slot" aria-hidden="true">{{ s.music.playing }}</span>
               </button>
-              <p class="tape__title">{{ r.title }}</p>
               <p class="tape__kicker tape__kicker--muted">{{ r.artists }}</p>
             </li>
             {% endfor %}

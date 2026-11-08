@@ -2,9 +2,8 @@
 <section class="section gallery" id="gallery" aria-labelledby="gallery-title" data-gallery>
   <div class="container gallery__grid">
     <div class="gallery__intro" data-reveal>
-      <h2 class="section-title" id="gallery-title">{{ s.gallery.title }}</h2>
-      <p class="section-sub">{{ s.gallery.subtitle }}</p>
-      <p class="gallery__count">{{ gallery.photos.length }} {{ s.gallery.count | upper }}</p>
+      <h2 class="section-title" id="gallery-title">{{ s.gallery.title | sectionText(sections, "gallery", "title", lang) }}</h2>
+      <p class="section-sub">{{ s.gallery.subtitle | sectionText(sections, "gallery", "subtitle", lang) }}</p>
       <button class="btn btn--ghost" type="button" data-gallery-open="0">{{ s.gallery.viewAll }}</button>
     </div>
     <ul class="mosaic" data-reveal>
@@ -18,10 +17,9 @@
       {% endfor %}
     </ul>
   </div>
-  <dialog class="lightbox" data-lightbox aria-label="{{ s.gallery.title }}">
+  <dialog class="lightbox" data-lightbox aria-label="{{ s.gallery.title | sectionText(sections, "gallery", "title", lang) }}">
     <figure class="lightbox__figure">
       <img data-lightbox-img alt="">
-      <figcaption><span data-lightbox-count></span></figcaption>
     </figure>
     <button class="lightbox__btn lightbox__close" type="button" aria-label="{{ s.gallery.close }}" data-lightbox-close>{{ icon("i-close") }}</button>
     <button class="lightbox__btn lightbox__prev" type="button" aria-label="{{ s.gallery.prev }}" data-lightbox-prev>{{ icon("i-chevron-l") }}</button>

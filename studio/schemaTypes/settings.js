@@ -1,8 +1,19 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 
+const SECTIONS = [
+  {title: 'Storytelling', value: 'storytelling'},
+  {title: 'Watch', value: 'watch'},
+  {title: 'Music', value: 'music'},
+  {title: 'Galeria', value: 'gallery'},
+  {title: 'Store', value: 'store'},
+  {title: 'Live (agenda)', value: 'live'},
+  {title: 'Join', value: 'join'},
+  {title: 'Booking', value: 'booking'},
+]
+
 export const settings = defineType({
   name: 'settings',
-  title: 'Geral e Booking',
+  title: 'Geral, seções e Booking',
   type: 'document',
   fields: [
     defineField({
@@ -42,16 +53,51 @@ export const settings = defineType({
     }),
     defineField({name: 'youtubeChannel', title: 'Link do canal do YouTube', type: 'url'}),
     defineField({
-      name: 'showStore',
-      title: 'Mostrar a Store no site',
-      type: 'boolean',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'showLive',
-      title: 'Mostrar a Live (agenda) no site',
-      type: 'boolean',
-      initialValue: false,
+      name: 'sections',
+      title: 'Seções do site',
+      description: 'Arraste para mudar a ordem da página e do menu. Desmarque "Ligada" para esconder a seção. A Home fica sempre em primeiro.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'sectionItem',
+          fields: [
+            defineField({
+              name: 'section',
+              title: 'Seção',
+              type: 'string',
+              options: {list: SECTIONS},
+              validation: (r) => r.required(),
+            }),
+            defineField({name: 'enabled', title: 'Ligada', type: 'boolean', initialValue: true}),
+            defineField({
+              name: 'title',
+              title: 'Nome no menu e título da seção',
+              description: 'Opcional. Em branco, usa o nome padrão do site.',
+              type: 'localeString',
+            }),
+            defineField({
+              name: 'subtitle',
+              title: 'Subtítulo da seção',
+              description: 'Opcional. A frase que aparece embaixo do título. Em branco, usa o texto padrão.',
+              type: 'localeString',
+            }),
+          ],
+          preview: {
+            select: {section: 'section', enabled: 'enabled', name: 'title.pt'},
+            prepare: ({section, enabled, name}) => ({
+              title: name || SECTIONS.find((o) => o.value === section)?.title || section,
+              subtitle: enabled === false ? 'Desligada' : 'Ligada',
+            }),
+          },
+        }),
+      ],
+      initialValue: SECTIONS.map(({value}) => ({_type: 'sectionItem', section: value, enabled: !['store', 'live'].includes(value)})),
+      validation: (r) =>
+        r.custom((items = []) => {
+          const keys = items.map((i) => i.section)
+          return new Set(keys).size === keys.length ? true : 'Cada seção só pode aparecer uma vez.'
+        }),
     }),
     defineField({
       name: 'shareImage',
@@ -61,5 +107,5 @@ export const settings = defineType({
     }),
     defineField({name: 'shareText', title: 'Texto de compartilhamento', type: 'localeText'}),
   ],
-  preview: {prepare: () => ({title: 'Geral e Booking'})},
+  preview: {prepare: () => ({title: 'Geral, seções e Booking'})},
 })

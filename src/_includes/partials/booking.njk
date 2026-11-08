@@ -2,12 +2,11 @@
 <section class="section booking" id="booking" aria-labelledby="booking-title">
   <div class="planet" aria-hidden="true"></div>
   <div class="container booking__content" data-reveal>
-    <h2 class="section-title" id="booking-title">{{ s.booking.title }}</h2>
+    <h2 class="section-title" id="booking-title">{{ s.booking.title | sectionText(sections, "booking", "title", lang) }}</h2>
     <p class="booking__lead">{{ s.booking.waLead | replace("\n", "<br>") | safe }}</p>
     <a class="btn btn--primary btn--lg" href="https://wa.me/{{ booking.whatsapp }}?text={{ booking.whatsappMessage | t(lang) | urlencode }}" target="_blank" rel="noopener">
       {{ icon("i-whatsapp", "btn__svg") }} {{ s.booking.waButton }}
     </a>
     <p class="booking__note">{{ s.booking.waNote }}</p>
-    <a class="text-link" href="/{{ lang }}/booking/#booking">{{ s.booking.toForm }}</a>
   </div>
 </section>

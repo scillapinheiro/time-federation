@@ -17,6 +17,12 @@
   to = "/en/"
   status = 302
 
+# The booking form was removed: old links land on the WhatsApp booking section
+[[redirects]]
+  from = "/:lang/booking/*"
+  to = "/:lang/#booking"
+  status = 301
+
 [[headers]]
   for = "/assets/img/*"
   [headers.values]

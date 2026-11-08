@@ -4,11 +4,13 @@
     "metaDescription": "Time Federation is an electronic music trio travelling between 80s synthesizers and the dance floor of now. Watch, listen and book the show.",
     "nav": {
       "home": "Home",
+      "storytelling": "Storytelling",
       "watch": "Watch",
       "music": "Music",
       "gallery": "Gallery",
       "store": "Store",
       "live": "Live",
+      "join": "Join",
       "booking": "Booking"
     },
     "menuOpen": "Open menu",
@@ -50,7 +52,6 @@
     "gallery": {
       "title": "Gallery",
       "subtitle": "Stages, studio sessions and the people behind the federation.",
-      "count": "photos",
       "viewAll": "View all photos",
       "open": "Open photo",
       "close": "Close",
@@ -89,48 +90,61 @@
       "title": "Booking",
       "waLead": "Talk to us on WhatsApp\nto book your event.",
       "waButton": "Open WhatsApp",
-      "waNote": "For event inquiries only.",
-      "toForm": "Prefer email? Use the booking form.",
-      "formLead": "Bring Time Federation to your event.",
-      "toWhatsapp": "Prefer WhatsApp? Talk to us there.",
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone / WhatsApp",
-      "date": "Event date",
-      "city": "City / venue",
-      "type": "Event type",
-      "message": "Message",
-      "namePh": "Your name",
-      "emailPh": "you@email.com",
-      "phonePh": "+55 00 00000 0000",
-      "cityPh": "City, venue",
-      "messagePh": "Tell us more about your event",
-      "typeOptions": [
-        "Festival",
-        "Club",
-        "Private event",
-        "Corporate event",
-        "Other"
-      ],
-      "typePh": "Select",
-      "required": "required",
-      "send": "Send request",
-      "thanksTitle": "Request sent",
-      "thanksText": "Thanks! We received your request and will get back to you soon.",
-      "back": "Back to the site"
+      "waNote": "For event inquiries only."
     },
-    "footer": "All rights reserved"
+    "storytelling": {
+      "title": "Storytelling",
+      "subtitle": "Who we are. What we fight for.",
+      "archive": "Federation archive",
+      "access": "Access granted",
+      "incoming": "Incoming transmission",
+      "whoWeAre": "Who we are",
+      "whatWeSee": "What we see",
+      "whatWeFight": "What we fight",
+      "mission": "Our mission",
+      "status": "Status",
+      "active": "Mission active",
+      "crew": "The crew"
+    },
+    "join": {
+      "title": "Join",
+      "subtitle": "The Federation needs more people.",
+      "button": "Join the Federation",
+      "note": "Enlistment open   No experience required",
+      "card": {
+        "id": "Agent ID",
+        "agent": "Agent",
+        "you": "You",
+        "status": "Status",
+        "recruit": "Recruit",
+        "clearance": "Clearance",
+        "pending": "Pending",
+        "issued": "Issued",
+        "now": "Now"
+      }
+    },
+    "foot": {
+      "about": "Indie dance, retrofuturism and audiovisual. A movement to bring people back to the present.",
+      "follow": "Follow",
+      "contact": "Contact",
+      "language": "Language",
+      "join": "Join the Federation",
+      "rights": "All rights reserved",
+      "top": "Back to top"
+    }
   },
   "pt": {
     "htmlLang": "pt-BR",
     "metaDescription": "Time Federation é um trio de música eletrônica que viaja entre os sintetizadores dos anos 80 e a pista de agora. Assista, ouça e contrate o show.",
     "nav": {
       "home": "Início",
+      "storytelling": "História",
       "watch": "Assistir",
       "music": "Música",
       "gallery": "Galeria",
       "store": "Loja",
       "live": "Agenda",
+      "join": "Faça parte",
       "booking": "Contratar"
     },
     "menuOpen": "Abrir menu",
@@ -172,7 +186,6 @@
     "gallery": {
       "title": "Galeria",
       "subtitle": "Palcos, sessões de estúdio e as pessoas por trás da federação.",
-      "count": "fotos",
       "viewAll": "Ver todas as fotos",
       "open": "Abrir foto",
       "close": "Fechar",
@@ -211,36 +224,47 @@
       "title": "Contratar",
       "waLead": "Fale com a gente no WhatsApp\npara contratar o show.",
       "waButton": "Abrir WhatsApp",
-      "waNote": "Apenas para contratação de eventos.",
-      "toForm": "Prefere e-mail? Use o formulário.",
-      "formLead": "Leve a Time Federation para o seu evento.",
-      "toWhatsapp": "Prefere WhatsApp? Fale com a gente por lá.",
-      "name": "Nome",
-      "email": "E-mail",
-      "phone": "Telefone / WhatsApp",
-      "date": "Data do evento",
-      "city": "Cidade / local",
-      "type": "Tipo de evento",
-      "message": "Mensagem",
-      "namePh": "Seu nome",
-      "emailPh": "voce@email.com",
-      "phonePh": "+55 00 00000 0000",
-      "cityPh": "Cidade, local",
-      "messagePh": "Conte mais sobre o seu evento",
-      "typeOptions": [
-        "Festival",
-        "Clube",
-        "Evento privado",
-        "Evento corporativo",
-        "Outro"
-      ],
-      "typePh": "Selecione",
-      "required": "obrigatório",
-      "send": "Enviar pedido",
-      "thanksTitle": "Pedido enviado",
-      "thanksText": "Obrigado! Recebemos o seu pedido e vamos responder em breve.",
-      "back": "Voltar ao site"
+      "waNote": "Apenas para contratação de eventos."
     },
-    "footer": "Todos os direitos reservados"
+    "storytelling": {
+      "title": "História",
+      "subtitle": "Quem somos. Contra o que lutamos.",
+      "archive": "Arquivo da Federação",
+      "access": "Acesso liberado",
+      "incoming": "Transmissão recebida",
+      "whoWeAre": "Quem somos",
+      "whatWeSee": "O que vemos",
+      "whatWeFight": "Contra o que lutamos",
+      "mission": "Nossa missão",
+      "status": "Status",
+      "active": "Missão ativa",
+      "crew": "A tripulação"
+    },
+    "join": {
+      "title": "Faça parte",
+      "subtitle": "A Federação precisa de mais pessoas.",
+      "button": "Quero me alistar",
+      "note": "Alistamento aberto   Sem experiência necessária",
+      "card": {
+        "id": "ID de agente",
+        "agent": "Agente",
+        "you": "Você",
+        "status": "Status",
+        "recruit": "Recruta",
+        "clearance": "Credencial",
+        "pending": "Pendente",
+        "issued": "Emitido",
+        "now": "Agora"
+      }
+    },
+    "foot": {
+      "about": "Indie dance, retrofuturismo e audiovisual. Um movimento para trazer as pessoas de volta ao presente.",
+      "follow": "Siga",
+      "contact": "Contato",
+      "language": "Idioma",
+      "join": "Entrar para a Federação",
+      "rights": "Todos os direitos reservados",
+      "top": "Voltar ao topo"
+    }
   }
 }

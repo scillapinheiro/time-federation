@@ -2,8 +2,8 @@
 <section class="section store" id="store" aria-labelledby="store-title" data-store>
   <div class="container store__grid">
     <div class="store__info" data-reveal>
-      <h2 class="section-title" id="store-title">{{ s.store.title }}</h2>
-      <p class="section-sub">{{ s.store.subtitle }}</p>
+      <h2 class="section-title" id="store-title">{{ s.store.title | sectionText(sections, "store", "title", lang) }}</h2>
+      <p class="section-sub">{{ s.store.subtitle | sectionText(sections, "store", "subtitle", lang) }}</p>
       <div class="store__product">
         <p class="kicker">{{ p.kicker | t(lang) | upper }}</p>
         <h3 class="store__name">{{ p.name | upper }}</h3>

@@ -1,0 +1,46 @@
+{%- set f = s.foot -%}
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <div class="footer__id">
+        <img src="/assets/img/tf-logo-512.png" alt="" width="88" height="88" loading="lazy">
+        <div>
+          <p class="footer__name">{{ site.name | upper }}</p>
+          <p class="footer__slogan">{{ site.slogan }}.</p>
+        </div>
+      </div>
+      <p class="footer__about">{{ f.about }}</p>
+    </div>
+
+    <nav class="footer__col" aria-label="{{ f.follow }}">
+      <h2 class="footer__label">{{ f.follow }}</h2>
+      <ul>
+        {% for net in (cmsSite.social or site.social) %}
+        <li><a href="{{ net.url }}" target="_blank" rel="noopener">{{ net.name | upper }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    {% if sections.on.booking or sections.on.join %}
+    <nav class="footer__col" aria-label="{{ f.contact }}">
+      <h2 class="footer__label">{{ f.contact }}</h2>
+      <ul>
+        {% if sections.on.booking %}<li><a href="{{ anchorBase }}#booking">{{ s.nav.booking | sectionText(sections, "booking", "title", lang) | upper }}</a></li>{% endif %}
+        {% if sections.on.join %}<li><a href="{{ join.groupUrl }}" target="_blank" rel="noopener">{{ f.join | upper }}</a></li>{% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+
+    <div class="footer__col">
+      <h2 class="footer__label">{{ f.language }}</h2>
+      <ul class="footer__lang">
+        <li><a href="{{ page.url | replace('/' + lang + '/', '/en/') }}" hreflang="en" {% if lang == "en" %}aria-current="true"{% endif %} data-lang-link>EN</a></li>
+        <li><a href="{{ page.url | replace('/' + lang + '/', '/pt/') }}" hreflang="pt-BR" {% if lang == "pt" %}aria-current="true"{% endif %} data-lang-link>PT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bar">
+    <p>{{ site.name | upper }}. {{ f.rights | upper }}.</p>
+    <a href="{{ anchorBase }}#home">{{ f.top | upper }}</a>
+  </div>
+</footer>

@@ -23,8 +23,8 @@
 <section class="section live" id="live" aria-labelledby="live-title" data-live>
   <div class="container">
     <header class="section-head" data-reveal>
-      <h2 class="section-title" id="live-title">{{ s.live.title }}</h2>
-      <p class="section-sub">{{ s.live.subtitle }}</p>
+      <h2 class="section-title" id="live-title">{{ s.live.title | sectionText(sections, "live", "title", lang) }}</h2>
+      <p class="section-sub">{{ s.live.subtitle | sectionText(sections, "live", "subtitle", lang) }}</p>
     </header>
     <div class="board" data-reveal>
       <div class="board__bar">

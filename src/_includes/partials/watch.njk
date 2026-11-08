@@ -3,8 +3,8 @@
 <section class="section watch" id="watch" aria-labelledby="watch-title" data-watch>
   <div class="container">
     <header class="section-head" data-reveal>
-      <h2 class="section-title" id="watch-title">{{ s.watch.title }}</h2>
-      <p class="section-sub">{{ s.watch.subtitle }}</p>
+      <h2 class="section-title" id="watch-title">{{ s.watch.title | sectionText(sections, "watch", "title", lang) }}</h2>
+      <p class="section-sub">{{ s.watch.subtitle | sectionText(sections, "watch", "subtitle", lang) }}</p>
     </header>
     <div class="watch__grid">
       <div class="deck" data-reveal>
@@ -54,7 +54,7 @@
                 {{ vhs(item.label, "TIME FEDERATION") }}
                 <span class="tape__slot" aria-hidden="true">{{ s.watch.playing }}</span>
               </button>
-              <p class="tape__kicker">{{ item.label }}{% if item.duration %} <span>{{ item.duration }}</span>{% endif %}</p>
+              {% if item.duration %}<p class="tape__kicker">{{ item.duration }}</p>{% endif %}
               <p class="tape__title">{{ item.title | t(lang) }}</p>
             </li>
             {% endfor %}

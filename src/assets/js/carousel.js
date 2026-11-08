@@ -17,9 +17,26 @@ export function initCarousels() {
       });
     };
 
-    const pageWidth = () => viewport.clientWidth - 90; // keep the faded slice visible
-    const pages = () => Math.max(1, Math.ceil((viewport.scrollWidth - 4) / pageWidth()));
-    const current = () => Math.round(viewport.scrollLeft / pageWidth());
+    // A page is the set of whole columns that fit in the rack (4 tapes on every screen size)
+    const track = root.querySelector(".rack__track");
+    const rows = () => getComputedStyle(track).gridTemplateRows.split(" ").length;
+    const gap = () => parseFloat(getComputedStyle(track).columnGap) || 0;
+    const colWidth = () => items[0]?.getBoundingClientRect().width || 1;
+    const colsPerPage = () => Math.max(1, Math.floor((root.clientWidth + gap() + 1) / (colWidth() + gap())));
+    const pageWidth = () => colsPerPage() * (colWidth() + gap());
+    const pages = () => Math.max(1, Math.ceil(Math.ceil(items.length / rows()) / colsPerPage()));
+    const current = () => {
+      const max = viewport.scrollWidth - viewport.clientWidth - 2;
+      if (viewport.scrollLeft >= max && max > 2) return pages() - 1;
+      return Math.min(pages() - 1, Math.round(viewport.scrollLeft / pageWidth()));
+    };
+
+    // Leave enough room at the end so the last page can line up with the first column
+    const padEnd = () => {
+      track.style.paddingInlineEnd = "";
+      const need = (pages() - 1) * pageWidth() - (viewport.scrollWidth - viewport.clientWidth);
+      if (need > 0) track.style.paddingInlineEnd = `${Math.ceil(need)}px`;
+    };
 
     const renderDots = () => {
       const n = pages();
@@ -49,10 +66,12 @@ export function initCarousels() {
     viewport.addEventListener("scroll", update, { passive: true });
     new ResizeObserver(() => {
       orderItems();
+      padEnd();
       renderDots();
       update();
     }).observe(viewport);
     orderItems();
+    padEnd();
     renderDots();
     update();
   });

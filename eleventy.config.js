@@ -12,6 +12,11 @@ export default function (eleventyConfig) {
     return value;
   });
 
+  // Section name or subtitle typed in the panel, else the default text
+  eleventyConfig.addFilter("sectionText", (fallback, sections, id, field, lang) =>
+    sections?.text?.[id]?.[field]?.[lang] || fallback
+  );
+
   eleventyConfig.addFilter("chars", (str, length) =>
     String(str).toUpperCase().padEnd(length, " ").slice(0, length).split("")
   );
