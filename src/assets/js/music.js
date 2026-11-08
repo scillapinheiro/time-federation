@@ -20,6 +20,8 @@ export function initMusic() {
   let busy = false;
   let playing = false;
 
+  fitCassetteTitles(root);
+
   const uri = (tape) => `spotify:track:${tape.dataset.spotify}`;
 
   function typeTitle(text) {
@@ -155,4 +157,17 @@ export function initMusic() {
       if (cmd === "ff") controller.seek(position + 10);
     })
   );
+}
+
+// Long track names shrink to stay on one line inside the cassette label.
+const LABEL_WIDTH = 160; // free space on the label, in the cassette's viewBox units
+function fitCassetteTitles(root) {
+  const fit = () =>
+    root.querySelectorAll(".cassette__title").forEach((el) => {
+      el.setAttribute("font-size", "10");
+      const width = el.getComputedTextLength();
+      if (width > LABEL_WIDTH) el.setAttribute("font-size", ((10 * LABEL_WIDTH) / width).toFixed(2));
+    });
+  fit();
+  document.fonts?.ready.then(fit);
 }

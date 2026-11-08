@@ -48,19 +48,22 @@ A direção visual nasceu do próprio conceito da banda: em vez de cards e playe
 | Seção | O que tem |
 |---|---|
 | **Home** | Túnel do tempo em movimento, a ampulheta oficial se desenhando ao abrir e uma régua de 1980 até NOW |
+| **Storytelling** | A história da Federação num arquivo confidencial de terminal antigo, com a ficha de cada integrante |
 | **Watch** | Live set e série documental como fitas VHS. A fita escolhida voa até o videocassete, entra pela abertura e a TV liga com chiado antes do vídeo começar |
 | **Music** | Lançamentos como fitas cassete, do mais novo para o mais antigo. A fita cai no rádio, os carretéis giram e o equalizador acompanha a música (player oficial do Spotify) |
 | **Gallery** | Mosaico de fotos com ampliação em tela cheia, navegável por teclado e por gesto no celular |
 | **Store** | Página da jaqueta oficial, com a compra feita no Shopify |
 | **Live** | Agenda num painel de aeroporto que vira as plaquinhas ao aparecer na tela, com próximos shows e shows anteriores |
-| **Booking** | Duas formas de contratar: WhatsApp direto ou formulário |
+| **Join** | Convite de recrutamento com crachá de agente, levando ao grupo da banda no WhatsApp |
+| **Booking** | Contratação direto pelo WhatsApp |
 
 **Detalhes que fazem diferença**
 
 - **Mobile first**, com telas pensadas para celular, tablet e desktop.
 - **Bilíngue**: `/en/` e `/pt/`, com o idioma escolhido automaticamente na primeira visita.
 - **Prateleiras com carrossel**: quando há mais fitas do que cabem na tela, um pedaço da próxima aparece cortado na borda, para ficar claro que tem mais.
-- **Store e Live com chave liga/desliga** no painel, para entrar no ar só quando houver produto e agenda.
+- **Seções controladas pelo painel**: a equipe muda a ordem das seções (e do menu), liga ou desliga cada uma e edita o nome e o subtítulo, sem mexer no código. Store e Live começam desligadas.
+- **Fitas sem informação repetida**: o nome da música fica inteiro na etiqueta da fita e diminui sozinho quando é comprido.
 - **Acessível**: navegação por teclado, foco visível e respeito à opção *reduzir movimento* do sistema, que desliga o que pisca e se repete, mas mantém as animações que contam a história.
 - **Leve**: sem framework no navegador, players carregados só no primeiro play e fotos entregues no tamanho certo de cada tela.
 

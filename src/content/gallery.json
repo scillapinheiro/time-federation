@@ -1,16 +1,53 @@
 {
   "photos": [
-    { "file": "img_0438", "alt": { "en": "The trio standing in front of red light stripes", "pt": "O trio em frente a faixas de luz vermelha" } },
-    { "file": "083a3861", "alt": { "en": "Portrait in front of a blue and red light halo", "pt": "Retrato em frente a um halo de luz azul e vermelha" } },
-    { "file": "083a3673", "alt": { "en": "Three silhouettes against red stripes", "pt": "Três silhuetas contra faixas vermelhas" } },
-    { "file": "img_0511", "alt": { "en": "The trio leaning against a red striped wall", "pt": "O trio apoiado em uma parede com faixas vermelhas" } },
-    { "file": "083a4105", "alt": { "en": "Close portrait of the trio in low light", "pt": "Retrato próximo do trio em pouca luz" } },
-    { "file": "083a3996", "alt": { "en": "Member crouching beside synth gear under blue light", "pt": "Integrante agachado ao lado dos sintetizadores sob luz azul" } },
-    { "file": "img_0801", "alt": { "en": "Two members in red light", "pt": "Dois integrantes sob luz vermelha" } },
-    { "file": "img_0712", "alt": { "en": "Silhouettes in red light", "pt": "Silhuetas sob luz vermelha" } },
-    { "file": "083a4012", "alt": { "en": "Member with sunglasses beside synth gear", "pt": "Integrante de óculos ao lado dos sintetizadores" } },
-    { "file": "img_0485", "alt": { "en": "Two members walking through red light stripes", "pt": "Dois integrantes caminhando entre faixas de luz vermelha" } },
-    { "file": "083a4168", "alt": { "en": "Official jackets on a rack under red light", "pt": "Jaquetas oficiais em uma arara sob luz vermelha" } },
-    { "file": "083a4208", "alt": { "en": "Back of the official jacket with the embroidered hourglass", "pt": "Costas da jaqueta oficial com a ampulheta bordada" } }
+    {
+      "file": "img_0438",
+      "alt": {
+        "en": "The trio standing in front of red light stripes",
+        "pt": "O trio em frente a faixas de luz vermelha"
+      }
+    },
+    {
+      "file": "083a3673",
+      "alt": {
+        "en": "Three silhouettes against red stripes",
+        "pt": "Três silhuetas contra faixas vermelhas"
+      }
+    },
+    {
+      "file": "img_0511",
+      "alt": {
+        "en": "The trio leaning against a red striped wall",
+        "pt": "O trio apoiado em uma parede com faixas vermelhas"
+      }
+    },
+    {
+      "file": "083a4105",
+      "alt": {
+        "en": "Close portrait of the trio in low light",
+        "pt": "Retrato próximo do trio em pouca luz"
+      }
+    },
+    {
+      "file": "img_0801",
+      "alt": {
+        "en": "Two members in red light",
+        "pt": "Dois integrantes sob luz vermelha"
+      }
+    },
+    {
+      "file": "img_0712",
+      "alt": {
+        "en": "Silhouettes in red light",
+        "pt": "Silhuetas sob luz vermelha"
+      }
+    },
+    {
+      "file": "img_0485",
+      "alt": {
+        "en": "Two members walking through red light stripes",
+        "pt": "Dois integrantes caminhando entre faixas de luz vermelha"
+      }
+    }
   ]
 }

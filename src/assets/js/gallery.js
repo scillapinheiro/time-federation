@@ -3,7 +3,6 @@ export function initGallery() {
   if (!root) return;
   const dialog = root.querySelector("[data-lightbox]");
   const img = root.querySelector("[data-lightbox-img]");
-  const count = root.querySelector("[data-lightbox-count]");
   const photos = JSON.parse(root.querySelector("[data-gallery-data]").textContent);
   const lang = document.documentElement.lang.startsWith("pt") ? "pt" : "en";
   let index = 0;
@@ -14,7 +13,6 @@ export function initGallery() {
     const p = photos[index];
     img.src = p.src;
     img.alt = p.alt[lang] || p.alt.en;
-    count.textContent = `${String(index + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`;
   };
 
   root.querySelectorAll("[data-gallery-open]").forEach((btn) =>

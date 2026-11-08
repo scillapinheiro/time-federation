@@ -2,8 +2,6 @@
 {%- set other = "pt" if lang == "en" else "en" -%}
 {%- set onHome = pageType == "home" -%}
 {%- set anchorBase = "" if onHome else "/" + lang + "/" -%}
-{%- set showStore = store.enabled or build.preview -%}
-{%- set showLive = live.enabled or build.preview -%}
 <!doctype html>
 <html lang="{{ s.htmlLang }}">
 <head>
@@ -35,9 +33,7 @@
   <main id="main">
     {{ content | safe }}
   </main>
-  <footer class="site-footer">
-    <p>© {{ build.year }} {{ site.name }}. {{ s.footer }}.</p>
-  </footer>
+  {% include "partials/footer.njk" %}
   <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
