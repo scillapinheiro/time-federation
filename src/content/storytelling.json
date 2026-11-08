@@ -1,0 +1,64 @@
+{
+  "headline": {
+    "en": "We were born beyond reality, time and space.",
+    "pt": "Nascemos além da realidade, do tempo e do espaço."
+  },
+  "whoWeAre": {
+    "en": "Time Federation is a federation of time travelers. We move across dimensions guarding space and time, trying to save the future.\n\nOn this side of reality we are a band: a collective of artists in love with the aesthetics of the 80s, making music, art and culture that always carries a hidden message.",
+    "pt": "A Time Federation é uma federação de viajantes do tempo. Atravessamos dimensões cuidando do espaço e do tempo, tentando salvar o futuro.\n\nDeste lado da realidade somos uma banda: um coletivo de artistas apaixonados pela estética dos anos 80, fazendo música, arte e cultura que sempre carregam uma mensagem implícita."
+  },
+  "whatWeSee": {
+    "en": "Most people have no time, and they don't even know it. Some minds are trapped in the past, sinking into depression. Others race into the future, consumed by anxiety. Almost nobody is here, in the present.",
+    "pt": "A maioria das pessoas não tem tempo, e nem sabe disso. Algumas mentes estão presas no passado, afundando na depressão. Outras correm para o futuro, consumidas pela ansiedade. Quase ninguém está aqui, no presente."
+  },
+  "whatWeFight": {
+    "en": "A sick society run by megacorporations. They caged Kronos, the entity that gives life to time, inside the Cube: a machine for temporal and media manipulation across the realities of the multiverse.\n\nWith Kronos corrupted, they create paradoxes, bend every reality and steal people's time through the device in their pockets. The phone is already a time machine. Most people just don't know it.",
+    "pt": "Uma sociedade doente, comandada por megacorporações. Elas aprisionaram Kronos, a entidade que dá vida ao tempo, dentro do Cubo: uma máquina de manipulação temporal e midiática nas realidades do multiverso.\n\nCom Kronos corrompido, elas criam paradoxos, distorcem todas as realidades e roubam o tempo das pessoas pelo aparelho que carregam no bolso. O celular já é uma máquina do tempo. A maioria só não sabe disso."
+  },
+  "mission": {
+    "en": "Bring people back to the present. Reconnect them with the real world through art, music, culture and knowledge.",
+    "pt": "Trazer as pessoas de volta ao presente. Reconectá-las com o mundo real através da arte, da música, da cultura e do conhecimento."
+  },
+  "crewIntro": {
+    "en": "Each of them learned to see and use time in a different way.",
+    "pt": "Cada um aprendeu a enxergar e usar o tempo de um jeito diferente."
+  },
+  "members": [
+    {
+      "name": "Luna Mater",
+      "file": "083a3861",
+      "alt": {
+        "en": "Luna Mater in front of a blue and red light halo",
+        "pt": "Luna Mater em frente a um halo de luz azul e vermelha"
+      },
+      "bio": {
+        "en": "The Moon who wanted to live. She took human form to experience life at its full intensity. Having watched the whole existence of the universe, she has seen more than anyone.",
+        "pt": "A Lua que queria viver. Ela assumiu forma humana para experimentar a vida em sua plena intensidade. Como testemunhou toda a existência do universo, já viu mais do que qualquer um."
+      }
+    },
+    {
+      "name": "Matheus Bento",
+      "file": "083a3996",
+      "alt": {
+        "en": "Matheus Bento crouching beside synth gear under blue light",
+        "pt": "Matheus Bento agachado ao lado dos sintetizadores sob luz azul"
+      },
+      "bio": {
+        "en": "Founder of the Federation. A scientist searching for clean energy through the collision of black holes, until an accident left him living past, present and future at the same time.",
+        "pt": "Fundador da Federação. Um cientista que buscava energia limpa na colisão de buracos negros, até que um acidente o fez viver passado, presente e futuro ao mesmo tempo."
+      }
+    },
+    {
+      "name": "Bruno Souza",
+      "file": "083a4012",
+      "alt": {
+        "en": "Bruno Souza with sunglasses beside synth gear",
+        "pt": "Bruno Souza de óculos ao lado dos sintetizadores"
+      },
+      "bio": {
+        "en": "A test pilot flying a new fighter over the Bermuda Triangle during the Second World War. He fell into a time vortex, lost his own timeline and landed in the Federation's path, where he and Bento found Luna.",
+        "pt": "Piloto de testes de um novo caça sobre o Triângulo das Bermudas durante a Segunda Guerra Mundial. Caiu num vórtice temporal, perdeu a própria linha do tempo e foi parar no caminho da Federação, onde ele e o Bento encontraram a Luna."
+      }
+    }
+  ]
+}

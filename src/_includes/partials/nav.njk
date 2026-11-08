@@ -1,0 +1,35 @@
+{%- from "partials/macros.njk" import icon -%}
+{%- set langHref = page.url | replace("/" + lang + "/", "/" + other + "/") -%}
+<header class="nav" data-nav>
+  <a class="nav__brand" href="{{ anchorBase }}#home">{{ site.name | upper }}</a>
+  <nav class="nav__links" aria-label="Main">
+    {% for id in sections.order %}
+    <a class="nav__link" href="{{ anchorBase }}#{{ id }}" data-nav-link="{{ id }}">{{ s.nav[id] | sectionText(sections, id, "title", lang) }}</a>
+    {% endfor %}
+  </nav>
+  <div class="nav__aside">
+    <div class="lang" role="group" aria-label="{{ s.langLabel }}">
+      <a href="{{ page.url | replace('/' + lang + '/', '/en/') }}" hreflang="en" {% if lang == "en" %}aria-current="true"{% endif %} data-lang-link>EN</a>
+      <a href="{{ page.url | replace('/' + lang + '/', '/pt/') }}" hreflang="pt-BR" {% if lang == "pt" %}aria-current="true"{% endif %} data-lang-link>PT</a>
+    </div>
+  </div>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="{{ s.menuOpen }}" data-label-open="{{ s.menuOpen }}" data-label-close="{{ s.menuClose }}" data-menu-toggle>
+    {{ icon("i-menu", "nav__toggle-open") }}{{ icon("i-close", "nav__toggle-close") }}
+  </button>
+</header>
+<div class="menu" id="menu" hidden data-menu>
+  <nav aria-label="Mobile">
+    <ul class="menu__links">
+      {% for id in sections.order %}
+      <li><a href="{{ anchorBase }}#{{ id }}" data-menu-link>{{ s.nav[id] | sectionText(sections, id, "title", lang) }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <p class="menu__slogan">{{ site.slogan }}</p>
+    <div class="lang lang--lg" role="group" aria-label="{{ s.langLabel }}">
+      <a href="{{ page.url | replace('/' + lang + '/', '/en/') }}" hreflang="en" {% if lang == "en" %}aria-current="true"{% endif %} data-lang-link>EN</a>
+      <a href="{{ page.url | replace('/' + lang + '/', '/pt/') }}" hreflang="pt-BR" {% if lang == "pt" %}aria-current="true"{% endif %} data-lang-link>PT</a>
+    </div>
+  </div>
+</div>

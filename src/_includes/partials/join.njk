@@ -1,0 +1,36 @@
+{%- from "partials/macros.njk" import icon -%}
+{%- set j = s.join -%}
+<section class="section join" id="join" aria-labelledby="join-title">
+  <div class="container join__grid">
+    <div class="join__copy" data-reveal>
+      <h2 class="section-title" id="join-title">{{ j.title | sectionText(sections, "join", "title", lang) }}</h2>
+      <p class="section-sub">{{ j.subtitle | sectionText(sections, "join", "subtitle", lang) }}</p>
+      <p class="join__lead">{{ join.lead | t(lang) }}</p>
+      <p class="join__text">{{ join.text | t(lang) }}</p>
+      <a class="btn btn--primary btn--lg join__btn" href="{{ join.groupUrl }}" target="_blank" rel="noopener">
+        {{ icon("i-whatsapp", "btn__svg") }} {{ j.button }}
+      </a>
+      <p class="join__note">{{ j.note }}</p>
+    </div>
+
+    <div class="agent" aria-hidden="true" data-reveal>
+      <div class="agent__card">
+        <div class="agent__band"><b>{{ site.name | upper }}</b><span>{{ j.card.id }}</span></div>
+        <div class="agent__body">
+          <div class="agent__photo">
+            <svg viewBox="0 0 150 186" fill="none"><circle cx="75" cy="70" r="30" stroke="currentColor" stroke-width="2"/><path d="M22 186c0-36 24-62 53-62s53 26 53 62" stroke="currentColor" stroke-width="2"/></svg>
+            <span>?</span>
+          </div>
+          <dl class="agent__fields">
+            <div><dt>{{ j.card.agent }}</dt><dd class="is-red">{{ j.card.you }}</dd></div>
+            <div><dt>{{ j.card.status }}</dt><dd>{{ j.card.recruit }}</dd></div>
+            <div><dt>{{ j.card.clearance }}</dt><dd>{{ j.card.pending }}</dd></div>
+            <div><dt>{{ j.card.issued }}</dt><dd>{{ j.card.now }}</dd></div>
+          </dl>
+          <img class="agent__logo" src="/assets/img/tf-logo-512.png" alt="" width="120" height="120" loading="lazy">
+        </div>
+        <div class="agent__foot"><span class="agent__barcode"></span><span class="agent__slogan">{{ site.slogan }}</span></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+<section class="home" id="home" aria-label="{{ site.name }}">
+  <div class="home__tunnel" aria-hidden="true">
+    <img class="home__rays" src="/assets/img/bg/tunnel-rays.svg" alt="">
+    <div class="home__rings">{% for i in range(0, 8) %}<span style="--i:{{ i }}"></span>{% endfor %}</div>
+    <div class="home__core"></div>
+  </div>
+  <div class="home__content">
+    <h1 class="home__title" aria-label="{{ site.name }}">{% for c in (site.name | upper).split("") %}<span aria-hidden="true">{{ c }}</span>{% endfor %}</h1>
+    {% include "partials/logo.njk" %}
+    <p class="home__slogan">{{ site.slogan }}</p>
+  </div>
+  <div class="timeline" aria-hidden="true" data-timeline>
+    <div class="timeline__ticks">
+      {% for y in range(1980, build.year) %}
+      <span class="timeline__tick{% if y % 10 == 0 %} is-decade{% elif y % 5 == 0 %} is-major{% endif %}" style="--p:{{ ((y - 1980) / (build.year - 1980) * 100) }}%">{% if y % 5 == 0 and y < build.year - 2 %}<i>{{ y }}</i>{% endif %}</span>
+      {% endfor %}
+      <span class="timeline__now" style="--p:100%"><i>NOW</i></span>
+    </div>
+  </div>
+</section>

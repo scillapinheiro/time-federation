@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "youtubeId": "eFvIYsopGOA",
+      "type": "liveset",
+      "label": "LIVE SET",
+      "title": { "en": "Dopamine Overdrive", "pt": "Dopamine Overdrive" },
+      "description": { "en": "Full synthwave show", "pt": "Show completo de synthwave" },
+      "duration": "43 MIN"
+    },
+    {
+      "youtubeId": "8va47lHrCFE",
+      "type": "episode",
+      "label": "EP01",
+      "title": { "en": "Uma Federação precisa de mais pessoas", "pt": "Uma Federação precisa de mais pessoas" },
+      "duration": "7:24"
+    },
+    {
+      "youtubeId": "bDb3Cr0wyOw",
+      "type": "episode",
+      "label": "EP02",
+      "title": { "en": "Do zero ao live act: a história do Bento", "pt": "Do zero ao live act: a história do Bento" },
+      "duration": "4:39"
+    },
+    {
+      "youtubeId": "Nykr_el2kVs",
+      "type": "episode",
+      "label": "EP03",
+      "title": { "en": "Uma história da Música Eletrônica BR que ninguém te contou", "pt": "Uma história da Música Eletrônica BR que ninguém te contou" },
+      "duration": "4:16"
+    }
+  ]
+}

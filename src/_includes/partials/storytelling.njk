@@ -1,0 +1,60 @@
+{%- set st = s.storytelling -%}
+{%- macro block(heading, paras) -%}
+<div class="archive__block">
+  <h4 class="archive__label">{{ heading }}</h4>
+  {% for p in (paras | t(lang)) %}<p>{{ p }}</p>{% endfor %}
+</div>
+{%- endmacro -%}
+<section class="section story" id="storytelling" aria-labelledby="story-title">
+  <div class="container">
+    <header class="section-head" data-reveal>
+      <h2 class="section-title" id="story-title">{{ st.title | sectionText(sections, "storytelling", "title", lang) }}</h2>
+      <p class="section-sub">{{ st.subtitle | sectionText(sections, "storytelling", "subtitle", lang) }}</p>
+    </header>
+
+    <article class="archive" data-reveal>
+      <div class="archive__bar" aria-hidden="true"><span>{{ st.archive }}</span><span>{{ st.access }}</span></div>
+      <div class="archive__body">
+        <p class="archive__label">{{ st.incoming }}</p>
+        <h3 class="archive__headline">{{ storytelling.headline | t(lang) }}</h3>
+        <div class="archive__cols">
+          <div class="archive__col">
+            {{ block(st.whoWeAre, storytelling.whoWeAre) }}
+            {{ block(st.whatWeSee, storytelling.whatWeSee) }}
+          </div>
+          <div class="archive__col">
+            {{ block(st.whatWeFight, storytelling.whatWeFight) }}
+            {{ block(st.mission, storytelling.mission) }}
+          </div>
+        </div>
+        <div class="archive__foot">
+          <p class="archive__slogan">{{ site.slogan }}.<span class="archive__cursor" aria-hidden="true"></span></p>
+          <p class="archive__status"><span>{{ st.status }}</span> <span>{{ st.active }}</span> <i aria-hidden="true"></i></p>
+        </div>
+      </div>
+    </article>
+
+    {% if storytelling.members.length %}
+    <div class="crew">
+      <header class="crew__head" data-reveal>
+        <h3 class="crew__title">{{ st.crew }}</h3>
+        {% if storytelling.crewIntro %}<p class="crew__intro">{{ storytelling.crewIntro | t(lang) }}</p>{% endif %}
+      </header>
+      <ul class="crew__list">
+        {% for m in storytelling.members %}
+        <li class="crew__card" data-reveal>
+          {% if m.src %}
+          <div class="crew__photo">
+            <img src="{{ m.srcSm }}" srcset="{{ m.srcSm }} 600w, {{ m.src }} 1000w" sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 92vw"
+              alt="{{ m.alt | t(lang) }}" loading="lazy"{% if m.position %} style="object-position: {{ m.position }}"{% endif %}>
+          </div>
+          {% endif %}
+          <h4 class="crew__name">{{ m.name }}</h4>
+          {% if m.bio %}<p class="crew__bio">{{ m.bio | t(lang) }}</p>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</section>
